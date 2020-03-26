@@ -5,7 +5,7 @@ from ceefax.page import Page, special
 import signal
 import curses
 from ceefax.error import error_list
-from exceptions import ConfigError, PageError, TimeUp
+from ceefax.error.exceptions import ConfigError, PageError, TimeUp
 import traceback
 
 try:
