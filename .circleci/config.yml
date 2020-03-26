@@ -9,13 +9,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install CEEFAX
-        command : |
-          pip install . --user -v
-      - run:
         name: Run unit tests
-        command : |
-          python3 -m pytest test/
+        command : python3 -m pytest test/
 
 workflows:
   main:
