@@ -20,7 +20,7 @@ jobs:
           command: pip3 install . --user -v
           name: Install
       - run:
-          command: python3 -m pytest test.
+          command: python3 -m pytest test/
           name: Test
 
 workflows:
