@@ -1,12 +1,11 @@
-from __future__ import division,print_function
-
 import random
 from ceefax import config
 import os
-from ceefax.page import Page,special
+from ceefax.page import Page, special
 import signal
 import curses
 from ceefax.error import error_list
+from exceptions import ConfigError, PageError, TimeUp
 import traceback
 
 try:
@@ -14,17 +13,14 @@ try:
 except:
     pass
 
-class TimeUp(BaseException):
-    pass
-
-class PageError(BaseException):
-    pass
 
 def alarm(signum, frame):
     raise TimeUp
 
+
 def pass_f(signum, frame):
     pass
+
 
 def is_page_file(f):
     if not os.path.isfile(os.path.join(config.pages_dir, f)):
@@ -35,10 +31,12 @@ def is_page_file(f):
         return False
     return True
 
+
 def get_chr(ip):
-    if 48<=ip<=57 or 65<=ip<=90 or 97<=ip<=122:
+    if 48 <= ip <= 57 or 65 <= ip <= 90 or 97 <= ip <= 122:
         return chr(ip)
     return ""
+
 
 class PageManager:
     def __init__(self, screen):
@@ -50,8 +48,10 @@ class PageManager:
 
     def load_all_pages(self):
         if not os.path.exists(config.pages_dir):
-            raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
+            raise ConfigError("The pages folder doesn't exist:"
+                              " " + config.pages_dir)
+        only_page_files = [f for f in os.listdir(config.pages_dir)
+                           if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
@@ -70,13 +70,15 @@ class PageManager:
 
     def test_all_pages(self):
         if not os.path.exists(config.pages_dir):
-            raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
+            raise ConfigError("The pages folder doesn't exist:"
+                              " " + config.pages_dir)
+        only_page_files = [f for f in os.listdir(config.pages_dir)
+                           if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             try:
-                module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
-                                 page_file_no_ext)
+                module = getattr(__import__(
+                    "pages", fromlist=[page_file_no_ext]), page_file_no_ext)
                 reload(module)
                 for filename in dir(module):
                     obj = getattr(module, filename)
@@ -94,21 +96,24 @@ class PageManager:
                                     thing.background()
                                 thing.reload()
                                 thing.generate_content()
-            except BaseException as e:
+            except:
                 print(page_file)
                 print(traceback.format_exc())
                 print("")
 
     def add(self, page):
         if page.number in self.pages:
-            raise PageError("Page "+page.number+" already exists ("+self.pages[page.number].title+" and "+page.title+")")
+            raise PageError("Page " + page.number + " already exists "
+                            "(" + self.pages[page.number].title + " "
+                            "and " + page.title + ")")
         self.pages[page.number] = page
 
     def get_loaded_random(self):
         page = self.build(FailPage)
         self.loads += 1
         while not page.loaded or not page.background_loaded:
-            page = random.choice(self.get_enabled_pages(random.randrange(1,6)))
+            page = random.choice(self.get_enabled_pages(
+                random.randrange(1, 6)))
             if page.background_loaded:
                 page.loaded = False
                 try:
@@ -121,14 +126,16 @@ class PageManager:
     def print_all(self):
         for page_num, page in self.sorted_pages():
             p = ""
-            if not page.enabled: p += "\033[31m"
-            p += (page_num+" ")
+            if not page.enabled:
+                p += "\033[31m"
+            p += (page_num + " ")
             p += (page.title)
-            if not page.enabled: p += "\033[0m"
+            if not page.enabled:
+                p += "\033[0m"
             print(p)
 
     def sorted_pages(self):
-        items = [(i,j) for i,j in self.pages.items()]
+        items = list(self.pages.items())
         items.sort()
         return items
 
@@ -136,80 +143,26 @@ class PageManager:
         from helpers.file_handler import open_html
         for page_num, page in self.sorted_pages():
             page.cupt.ls = []
-            print(page_num+" "+page.title)
-            with open_html(page_num+".html","w") as f:
+            print(page_num + " " + page.title)
+            with open_html(page_num + ".html", "w") as f:
                 f.write(page.as_html())
         js = "taglines = {"
-        js += ",".join(['"'+str(page_num)+'":"'+page.tagline+'"' for page_num,page in self.sorted_pages()])
+        js += ",".join(['"' + str(page_num) + '":"' + page.tagline + '"'
+                        for page_num, page in self.sorted_pages()])
         js += "}\npages_on=Array("
-        js += ",".join(['"'+str(page_num)+'"' for page_num,page in self.sorted_pages() if page.enabled])
+        js += ",".join(['"' + str(page_num) + '"' for page_num, page
+                        in self.sorted_pages() if page.enabled])
         js += ")"
-        with open_html("info.js","w") as f:
+        with open_html("info.js", "w") as f:
             f.write(js)
 
-    def export_all(self):
-        import os
-        items = self.sorted_pages()
-        ls = ["# List of pages",
-              "The pages in brackets are disabled.",
-              "",
-              "Number & Page Name             Importance  File"]
-        for page_num, page in items:
-            p = ""
-            if not page.enabled: p += "("
-            p += (page_num+" ")
-            p += (page.title)
-            if not page.enabled: p += ")"
-            p += " " * (40-len(p))
-            p += str(page.importance)
-            p += " " * (43-len(p))
-            p += page.__class__.__module__.replace(".","/") + ".py"
-
-            ls.append(p)
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
-            f.write("  \n".join(ls))
-
-        git_list = {str(i):"" for i in range(100,1000)}
-        git_done = {str(i):False for i in range(100,1000)}
-
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES_WANTED.md")) as f:
-            for line in f:
-                if " " in line:
-                    n = line.split(" ",1)[0]
-                    desc = line.split(" ",1)[1].strip("\n")
-                    if "-" in n:
-                        ls = range(int(n.split("-")[0]),int(n.split("-")[1])+1)
-                    else:
-                        ls = [int(n)]
-                    for i in ls:
-                        git_list[str(i)] = desc
-
-        for page_num, page in items:
-            git_list[str(page_num)] = page.title
-            git_done[str(page_num)] = True
-        out = ""
-        for p in sorted(git_list):
-            q = git_list[p]
-            out += "- "
-            if git_done[p]:
-                out += "[x]"
-            else:
-                out += "[ ]"
-            out += " "+p+" "
-            if q == "":
-                out += "???"
-            else:
-                out += q
-            out += "\n"
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../list_for_git_issue"),"w") as f:
-            f.write(out)
-
     def get_enabled_pages(self, importance=1):
-        output = [page for page in self.pages.values() if page.enabled and page.importance >= importance]
+        output = [page for page in self.pages.values()
+                  if page.enabled and page.importance >= importance]
         if len(output) > 0:
             return output
         elif importance > 0:
-            return self.get_enabled_pages(importance-1)
+            return self.get_enabled_pages(importance - 1)
         else:
             return [page for page in self.pages.values() if page.enabled]
 
@@ -232,7 +185,7 @@ class PageManager:
                 except Exception as e:
                     error_list.add(e, page.number)
                     page.background_error = e
-            sleep(60*30)
+            sleep(60 * 30)
 
     def start_loop(self, test=None):
         try:
@@ -253,13 +206,10 @@ class PageManager:
             except Exception as e:
                 error_list.add(e, page.number)
                 page.background_error = e
-        thread.start_new_thread(self.background_loop,())
+        thread.start_new_thread(self.background_loop, ())
         self.main_loop()
 
     def main_loop(self):
-        from time import sleep
-        import sys
-        import select
         inp = "100"
         while True:
             self.clear_input()
@@ -304,20 +254,25 @@ class PageManager:
             update.git_pull()
 
         try:
-            while len(the_input)<3:
-                the_input = "0"+str(the_input)
+            while len(the_input) < 3:
+                the_input = "0" + str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.")
+            return self.build(FailPage, "Page " + the_input + " does "
+                              "not exist. Try the index in page 100.")
 
     def show(self, page):
         self.current_page = page
         self.screen.cupt.show_loading()
         if not isinstance(page, FailPage):
             if page.background_error is not None:
-                page = self.build(FailPage,"There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
+                page = self.build(FailPage, "There was an error running "
+                                  "page " + page.number + "'s background "
+                                  "function.\n\n" + str(page.background_error))
             elif page.number != "100" and not page.background_loaded:
-                page = self.build(FailPage,"Page "+page.number+" currently updating. Please try again in a few minutes")
+                page = self.build(FailPage, "Page " + page.number + ""
+                                  " currently updating. "
+                                  "Please try again in a few minutes")
         try:
             page.loaded = False
             page.reload()
@@ -325,18 +280,20 @@ class PageManager:
             page.show()
         except Exception as e:
             error_list.add(e, page)
-            page = self.build(FailPage,e,trace=traceback.format_exc())
+            page = self.build(FailPage, e, trace=traceback.format_exc())
             page.reload()
             page.loaded = True
             page.show()
 
     def show_input(self, i):
         pad = curses.newpad(1, config.WIDTH)
-        pad.addstr(0,0,i[:config.WIDTH-1])
-        pad.refresh(0,0, config.HEIGHT-1,0, config.HEIGHT-1,config.WIDTH)
+        pad.addstr(0, 0, i[:config.WIDTH - 1])
+        pad.refresh(0, 0, config.HEIGHT - 1,
+                    0, config.HEIGHT - 1, config.WIDTH)
 
     def clear_input(self):
-        self.show_input(" "*config.WIDTH)
+        self.show_input(" " * config.WIDTH)
+
 
 class FailPage(Page):
     def __init__(self, e=None, trace=""):
@@ -363,4 +320,3 @@ class FailPage(Page):
 
     def set_exception(self, e):
         self.ee = e
-

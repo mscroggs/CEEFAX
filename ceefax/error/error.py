@@ -1,6 +1,7 @@
 from datetime import datetime
 import traceback
 
+
 class List(object):
     def __init__(self):
         self.ls = []
@@ -11,6 +12,7 @@ class List(object):
 
     def __iter__(self):
         return iter(self.ls[::-1])
+
 
 class Error(object):
     def __init__(self, e, number):

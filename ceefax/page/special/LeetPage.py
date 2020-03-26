@@ -1,5 +1,6 @@
 from ceefax.page import Page
 
+
 class LeetPage(Page):
     def __init__(self):
         super(LeetPage, self).__init__("???")
@@ -7,4 +8,4 @@ class LeetPage(Page):
         self.background_loaded = True
 
     def generate_content(self):
-        self.add_title("LE:ET",fg="RED",bg="BLACK")
+        self.add_title("LE:ET", fg="RED", bg="BLACK")

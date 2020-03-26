@@ -1,19 +1,18 @@
-from math import floor
-import logging
 from ceefax import config
 from ceefax.error import error_list
 
 WARNING_USED = False
 
-color_codes = {"k": "BLACK",  "K": "GREY",
-               "r": "RED",    "R": "LIGHTRED",
+color_codes = {"k": "BLACK", "K": "GREY",
+               "r": "RED", "R": "LIGHTRED",
                "o": "ORANGE", "y": "YELLOW",
-               "g": "GREEN",  "G": "LIGHTGREEN",
-               "c": "CYAN",   "C": "LIGHTCYAN",
-               "b": "BLUE",   "B": "LIGHTBLUE",
-               "m": "MAGENTA","p": "PINK",
-               "w": "WHITE",  "W": "BRIGHTWHITE",
-               "d": "DEFAULT","-": "BLACK"}
+               "g": "GREEN", "G": "LIGHTGREEN",
+               "c": "CYAN", "C": "LIGHTCYAN",
+               "b": "BLUE", "B": "LIGHTBLUE",
+               "m": "MAGENTA", "p": "PINK",
+               "w": "WHITE", "W": "BRIGHTWHITE",
+               "d": "DEFAULT", "-": "BLACK"}
+
 
 class Dummy(object):
     def __init__(self, number="???"):
@@ -22,12 +21,14 @@ class Dummy(object):
     def __getattr__(self, *args, **kwargs):
         global WARNING_USED
         if not WARNING_USED:
-            error_list.add(self.number, "Warning: using Dummy class in place of CuPT")
+            error_list.add(self.number,
+                           "Warning: using Dummy class in place of CuPT")
             WARNING_USED = True
         return self
 
     def __call__(self, *args, **kwargs):
         return self
+
 
 class Page(object):
     def __init__(self, number):
@@ -51,7 +52,7 @@ class Page(object):
         ceeplot(self, *args, **kwargs)
 
     def move_cursor(self, x=None, y=None):
-        self.cupt.move_cursor(x=x,y=y)
+        self.cupt.move_cursor(x=x, y=y)
 
     def start_fg_color(self, color):
         self.cupt.start_fg_color(color)
@@ -81,47 +82,53 @@ class Page(object):
             bg = kwargs["bg"]
         self.cupt.add_block(block, *args, bg=bg)
 
-    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0, fill=True, max_width=config.WIDTH):
-        if fg in color_codes: fg = color_codes[fg]
-        if bg in color_codes: bg = color_codes[bg]
-        if font=="size7":
+    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0,
+                  fill=True, max_width=config.WIDTH):
+        if fg in color_codes:
+            fg = color_codes[fg]
+        if bg in color_codes:
+            bg = color_codes[bg]
+        if font == "size7":
             from printer import instance as prinstance
-        elif font=="size7condensed":
+        elif font == "size7condensed":
             from printer import thin_instance as prinstance
-        elif font=="size7extracondensed":
+        elif font == "size7extracondensed":
             from printer import extrathin_instance as prinstance
-        elif font=="size4":
+        elif font == "size4":
             from printer import size4_instance as prinstance
-        elif font=="size4bold":
+        elif font == "size4bold":
             from printer import size4bold_instance as prinstance
-        elif font=="size4mono":
+        elif font == "size4mono":
             from printer import size4mono_instance as prinstance
         else:
             raise ValueError("Undefined font.")
-        title_block = prinstance.text_to_ascii(title,fill=fill,max_width=max_width)
+        title_block = prinstance.text_to_ascii(title, fill=fill,
+                                               max_width=max_width)
         self.cupt.add_blocked_block(title_block, fg=fg, bg=bg, pre=pre)
 
     def add_rainbow_title(self, title, font="size7", pre=0, fill=True):
-        if font=="size7":
+        if font == "size7":
             from printer import instance as prinstance
-        elif font=="size7condensed":
+        elif font == "size7condensed":
             from printer import thin_instance as prinstance
-        elif font=="size7extracondensed":
+        elif font == "size7extracondensed":
             from printer import extrathin_instance as prinstance
-        elif font=="size4":
+        elif font == "size4":
             from printer import size4_instance as prinstance
-        elif font=="size4bold":
+        elif font == "size4bold":
             from printer import size4bold_instance as prinstance
-        elif font=="size4mono":
+        elif font == "size4mono":
             from printer import size4mono_instance as prinstance
         else:
             raise ValueError("Undefined font.")
         title_block = prinstance.text_to_ascii(title, fill=fill)
-        self.cupt.add_blocked_block(title_block, rainbow=True,pre=pre)
+        self.cupt.add_blocked_block(title_block, rainbow=True, pre=pre)
 
     def add_text(self, text, fg=None, bg=None):
-        if fg in color_codes: fg = color_codes[fg]
-        if bg in color_codes: bg = color_codes[bg]
+        if fg in color_codes:
+            fg = color_codes[fg]
+        if bg in color_codes:
+            bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -132,9 +139,12 @@ class Page(object):
         if bg is not None:
             self.end_bg_color()
 
-    def add_reveal_text(self, text, fg=None, bg=None, show=False, wrapping=False):
-        if fg in color_codes: fg = color_codes[fg]
-        if bg in color_codes: bg = color_codes[bg]
+    def add_reveal_text(self, text, fg=None, bg=None, show=False,
+                        wrapping=False):
+        if fg in color_codes:
+            fg = color_codes[fg]
+        if bg in color_codes:
+            bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -156,7 +166,6 @@ class Page(object):
             self.reveal_status = True
             self.cupt.unreveal()
 
-
     def add_rainbow_text(self, text):
         from cupt.cupt import non_dark_colors
         from random import choice
@@ -169,8 +178,10 @@ class Page(object):
         self.cupt.add_newline()
 
     def add_wrapped_text(self, text, pre=0, fg=None, bg=None):
-        if fg in color_codes: fg = color_codes[fg]
-        if bg in color_codes: bg = color_codes[bg]
+        if fg in color_codes:
+            fg = color_codes[fg]
+        if bg in color_codes:
+            bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -181,14 +192,14 @@ class Page(object):
         if bg is not None:
             self.end_bg_color()
 
-    def print_image(self,image,y_coord=0,x_coord=0):
-        self.move_cursor(y=y_coord,x=x_coord)
+    def print_image(self, image, y_coord=0, x_coord=0):
+        self.move_cursor(y=y_coord, x=x_coord)
         lines = image.split("\n")
-        for l in range(len(lines)//2):
-            for c in range(len(lines[2*l])):
-                c1 = lines[2*l][c]
+        for l in range(len(lines) // 2):
+            for c in range(len(lines[2 * l])):
+                c1 = lines[2 * l][c]
                 try:
-                    c2 = lines[2*l+1][c]
+                    c2 = lines[2 * l + 1][c]
                 except:
                     c2 = "k"
                 self.start_fg_color(color_codes[c1])
@@ -196,28 +207,28 @@ class Page(object):
                 self.add_text(u"\u2580")
                 self.end_bg_color()
                 self.end_fg_color()
-            self.move_cursor(y=y_coord + l+1, x=x_coord)
+            self.move_cursor(y=y_coord + l + 1, x=x_coord)
 
     def four_to_one(self, four):
-        n = {i:0 for i in color_codes}
+        n = {i: 0 for i in color_codes}
         for i in four:
             if i not in n:
                 i = "-"
             n[i] += 1
         m1 = None
         m2 = None
-        for tot in range(4,0,-1):
+        for tot in range(4, 0, -1):
             ls = [i for i in n if n[i] == tot]
-            if len(ls)>0 and m1 is None:
+            if len(ls) > 0 and m1 is None:
                 m1 = ls[0]
                 ls = ls[1:]
-            if len(ls)>0 and m2 is None:
+            if len(ls) > 0 and m2 is None:
                 m2 = ls[0]
                 break
         if m2 is None:
             m2 = "-"
         if m1 == "-":
-            m1,m2 = m2,m1
+            m1, m2 = m2, m1
 
         char = ""
         for i in four:
@@ -227,43 +238,31 @@ class Page(object):
                 char += "0"
         char = self.get_char(char)
 
-        return char,color_codes[m1],color_codes[m2]
+        return char, color_codes[m1], color_codes[m2]
 
     def get_char(self, char):
-        """Note: this returns a number when the character won't display on pi"""
+        """Note: this returns a number when the character won't display
+        on a pi."""
         if char == "0001":
             char = "0011"
-            #return u"\u2597"
         if char == "0010":
             char = "0011"
-            #return u"\u2596"
         if char == "0100":
             char = "1100"
-            #return u"\u259D"
         if char == "1000":
             char = "1100"
-            #return u"\u2598"
-
         if char == "0110":
             char = "1100"
-            #return u"\u259E"
         if char == "1001":
             char = "0011"
-            #return u"\u259A"
-
         if char == "0111":
             char = "1111"
-            #return u"\u259F"
         if char == "1011":
             char = "1111"
-            #return u"\u2599"
         if char == "1101":
             char = "1111"
-            #return u"\u259C"
         if char == "1110":
             char = "1111"
-            #return u"\u259B"
-
         if char == "0011":
             return u"\u2584"
         if char == "0101":
@@ -276,16 +275,16 @@ class Page(object):
             return u"\u2588"
         return " "
 
-    def print_compressed_image(self,image,y_coord=0,x_coord=0):
-        self.move_cursor(y=y_coord,x=x_coord)
+    def print_compressed_image(self, image, y_coord=0, x_coord=0):
+        self.move_cursor(y=y_coord, x=x_coord)
         lines = image.split("\n")
-        for l in range(0,len(lines),2):
-            self.move_cursor(y=y_coord + l//2, x=x_coord)
-            for c in range(0,len(lines[l]),2):
+        for l in range(0, len(lines), 2):
+            self.move_cursor(y=y_coord + l // 2, x=x_coord)
+            for c in range(0, len(lines[l]), 2):
                 four = ""
-                for A in [l,l+1]:
-                    for B in [c,c+1]:
-                        if len(lines)>A and len(lines[A])>B:
+                for A in [l, l + 1]:
+                    for B in [c, c + 1]:
+                        if len(lines) > A and len(lines[A]) > B:
                             four += lines[A][B]
                         else:
                             four += "-"
@@ -306,7 +305,8 @@ class Page(object):
         return config.now()
 
     background = None
-    # Define this function to run something every so often in the background. Use it for (eg) downloading weather data.
+    # Define this function to run something every so often in the background.
+    # Use it for (eg) downloading weather data.
 
     def generate_content(self):
         """This function will be run every time the page is loaded."""
