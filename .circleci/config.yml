@@ -8,12 +8,14 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - run:
-          command: ./manage.py test
-          name: Test
+        name: Install CEEFAX
+        command : |
+          pip install --user -v
+      - run:
+        name: Run unit tests
+        command : |
+          python3 -m pytest test/
 
 workflows:
   main:
