@@ -1,8 +1,5 @@
 import re
-try:
-    chr = unichr
-except:
-    pass
+
 
 # This function is taken from
 # http://effbot.org/zone/re-sub.htm#unescape-html
@@ -18,9 +15,9 @@ def unescape(text):
                     return chr(int(text[2:-1]))
             except ValueError:
                 pass
-        return text # leave as is
-    return re.sub("&#?\w+;", fixup, text)
+        return text  # leave as is
+    return re.sub(r"&#?\w+;", fixup, text)
 
 
 def strip_tags(txt):
-    return unescape(re.sub(r"<[^>]*>","",txt))
+    return unescape(re.sub(r"<[^>]*>", "", txt))

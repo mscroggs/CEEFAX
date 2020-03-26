@@ -5,6 +5,7 @@ import os
 from ceefax.page import PageManager
 from ceefax.cupt import Screen
 
+
 def is_page_file(f):
     if not os.path.isfile(os.path.join(config.pages_dir, f)):
         return False
@@ -20,11 +21,12 @@ def get_ceefax(test=None):
         Ceefax._instance = Ceefax(test)
     return Ceefax._instance
 
+
 class Ceefax:
     _instance = None
+
     def __init__(self, test=None):
         self.start_time = config.now()
-        from helpers import file_handler
         self.test = test
         self.page_manager = DummyPM()
 

@@ -45,7 +45,7 @@ class Printer(object):
 
     def text_to_ascii(self, text, fill=True, vertical_condense=False,
                       max_width=config.WIDTH, **options):
-        text_to_print = str(self.text_to_letterblock("|"+text, **options))
+        text_to_print = str(self.text_to_letterblock("|" + text, **options))
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):
@@ -53,7 +53,7 @@ class Printer(object):
                 output.append(line[:max_width])
                 hit_sides = True
             elif fill:
-                output.append(line+"x"*(max_width-len(line)))
+                output.append(line + "x" * (max_width - len(line)))
             else:
                 output.append(line)
         if vertical_condense:
