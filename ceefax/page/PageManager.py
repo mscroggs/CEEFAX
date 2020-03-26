@@ -1,12 +1,12 @@
 from __future__ import division,print_function
 
 import random
-import config
+from ceefax import config
 import os
-from page import Page,special
+from ceefax.page import Page,special
 import signal
 import curses
-from error import error_list
+from ceefax.error import error_list
 import traceback
 
 try:

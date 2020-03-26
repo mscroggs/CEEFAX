@@ -1,5 +1,5 @@
 import twitter
-import config
+from ceefax import config
 
 class NoTwitter(BaseException):
     pass

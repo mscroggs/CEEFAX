@@ -1,5 +1,5 @@
-from page import Page
-import config
+from ceefax.page import Page
+from ceefax import config
 from random import choice, randint
 
 def join(a,b):

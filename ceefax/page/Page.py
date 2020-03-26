@@ -1,7 +1,7 @@
 from math import floor
 import logging
-import config
-from error import error_list
+from ceefax import config
+from ceefax.error import error_list
 
 WARNING_USED = False
 

@@ -1,9 +1,9 @@
 # width:79
 # height: 30
-import config
+from ceefax import config
 import os
-from page import PageManager
-from cupt import Screen
+from ceefax.page import PageManager
+from ceefax.cupt import Screen
 
 def is_page_file(f):
     if not os.path.isfile(os.path.join(config.pages_dir, f)):

@@ -5,7 +5,7 @@ import fonts.size4.default
 import fonts.size4bold.default
 import fonts.size4mono.default
 import fonts.exceptions
-import config
+from ceefax import config
 from fonts.LetterBlock import LetterBlock
 
 

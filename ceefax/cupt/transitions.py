@@ -1,6 +1,6 @@
 from __future__ import division
+from ceefax import config
 
-import config
 def make_transition(f):
     to_do = {}
     for x in range(config.WIDTH):

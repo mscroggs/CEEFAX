@@ -1,5 +1,5 @@
 import curses
-import config
+from ceefax import config
 from .cupt import CuPT
 
 class Screen:

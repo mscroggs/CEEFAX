@@ -1,6 +1,6 @@
 from os.path import join as _join
 import json as _json
-from config import test_dir, default_path, ceefax_path
+from ceefax.config import test_dir, default_path, ceefax_path
 
 class DummyFile():
     def read():

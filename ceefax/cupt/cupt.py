@@ -3,7 +3,7 @@
 from __future__ import division
 
 import curses
-import config
+from ceefax import config
 
 class CuPT:
     # CuPT: Curses Printing Tool

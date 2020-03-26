@@ -1,6 +1,6 @@
 from __future__ import division
 
-import config
+from ceefax import config
 from math import floor
 
 def intf(n):
