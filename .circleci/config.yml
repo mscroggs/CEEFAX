@@ -1,23 +1,24 @@
+
+
 version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
-
-install-ceefax: &install-ceefax
-  name: Install CEEFAX
-  run: pip3 install . --user -v
-
-run-unit-tests: &run-unit-tests
-  name: Run tests
-  run: python3 -m pytest test/
 
 jobs:
   build-and-test:
     executor: python/default
     steps:
       - checkout
-      - run: *install-ceefax
-      - run: *run-unit-tests
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: pip3 install . --user -v
+          name: Install
+      - run:
+          command: python3 -m pytest test.
+          name: Test
 
 workflows:
   main:
