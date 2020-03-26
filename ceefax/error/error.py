@@ -7,7 +7,7 @@ class List(object):
         self.ls = []
 
     def add(self, e, number):
-        self.ls.append(Error(e,number))
+        self.ls.append(Error(e, number))
         self.ls = self.ls[-10:]
 
     def __iter__(self):
@@ -30,23 +30,22 @@ class Error(object):
         out = "At " + self.datetime.strftime("%Y-%m-%d %H:%M")
         out += ", page " + self.number + " had a"
         e = self._error_as_string()
-        if e.lower()[0] in ["a","e","i","o","u"]:
+        if e.lower()[0] in ["a", "e", "i", "o", "u"]:
             out += "n"
         return out + " " + e
-
 
     def short_traceback(self):
         last = 0
         tsp = self.traceback.split("\n")
-        for i,line in enumerate(tsp):
+        for i, line in enumerate(tsp):
             if "/pages/" in line:
                 last = i
-        out = tsp[last:last+2]
+        out = tsp[last:last + 2]
         last = 0
-        for i,line in enumerate(tsp):
+        for i, line in enumerate(tsp):
             if "ceefax" in line:
                 last = i
-        out += tsp[last:last+2]
+        out += tsp[last:last + 2]
         return "\n".join(out)
 
 

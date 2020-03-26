@@ -2,10 +2,11 @@ import curses
 from ceefax import config
 from .cupt import CuPT
 
+
 class Screen:
     def __enter__(self):
         import locale
-        locale.setlocale(locale.LC_ALL,"")
+        locale.setlocale(locale.LC_ALL, "")
 
         self.scr = curses.initscr()
         self.cupt = CuPT(self.scr)
@@ -17,19 +18,20 @@ class Screen:
         self.old = curses.curs_set(0)
 
         self.scr.keypad(1)
-        curses.resizeterm(config.HEIGHT,config.WIDTH)
+        curses.resizeterm(config.HEIGHT, config.WIDTH)
         self.scr.refresh()
         return self
 
     def getch(self):
         return self.scr.getch()
 
-    def __exit__(self,a,b,c):
+    def __exit__(self, a, b, c):
         curses.nocbreak()
         curses.curs_set(self.old)
         self.scr.keypad(0)
         curses.echo()
         curses.endwin()
+
 
 class DummyScreen:
     def __init__(self):
