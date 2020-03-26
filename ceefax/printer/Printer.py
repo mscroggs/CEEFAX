@@ -39,15 +39,13 @@ class Printer(object):
 
     @process_printing_options
     def text_to_letterblock(self, text):
-        try: from functools import reduce
-        except: pass
-        return str(reduce(LetterBlock.__add__, map(self.font.get_letter, text)))
+        from functools import reduce
+        return str(reduce(LetterBlock.__add__,
+                          map(self.font.get_letter, text)))
 
-    def text_to_ascii(self, text, fill=True, vertical_condense=False, max_width=config.WIDTH, **options):
-        #try:
+    def text_to_ascii(self, text, fill=True, vertical_condense=False,
+                      max_width=config.WIDTH, **options):
         text_to_print = str(self.text_to_letterblock("|"+text, **options))
-        #except:
-        #    text_to_print = text
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):
@@ -62,37 +60,39 @@ class Printer(object):
             output = self.v_condense(output)
 
         if hit_sides and self.squashed is not None:
-            return self.squashed.text_to_ascii(text,fill,vertical_condense=vertical_condense,**options)
+            return self.squashed.text_to_ascii(
+                text, fill, vertical_condense=vertical_condense, **options)
 
         return "\n".join(output)
 
     def v_condense(self, text):
         output = []
-        for i in range(0,len(text),2):
+        for i in range(0, len(text), 2):
             line = ""
-            if i+1==len(text):
-                text.append("x"*len(text[i]))
-            for a,b in zip(text[i],text[i+1]):
-                if a+b=="xx":
+            if i + 1 == len(text):
+                text.append("x" * len(text[i]))
+            for a, b in zip(text[i], text[i + 1]):
+                if a + b == "xx":
                     line += "x"
-                elif a+b=="x ":
+                elif a + b == "x ":
                     line += "'"
-                elif a+b=="' ":
+                elif a + b == "' ":
                     line += "'"
-                elif a+b==", ":
+                elif a + b == ", ":
                     line += "'"
-                elif a+b==" x":
+                elif a + b == " x":
                     line += ","
-                elif a+b==" ,":
+                elif a + b == " ,":
                     line += ","
-                elif a+b==" '":
+                elif a + b == " '":
                     line += ","
-                elif a+b=="  ":
+                elif a + b == "  ":
                     line += " "
                 else:
                     line += "x"
             output.append(line)
         return output
+
 
 extrathin_instance = Printer()
 extrathin_instance.set_font(fonts.size7extracondensed.default)
@@ -103,7 +103,6 @@ thin_instance.set_font(fonts.size7condensed.default)
 instance = Printer(thin_instance)
 instance.set_font(fonts.size7.default)
 
-# If you want to add more fonts you have to also add their names into __init__.py
 size4_instance = Printer()
 size4_instance.set_font(fonts.size4.default)
 
