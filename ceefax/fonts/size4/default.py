@@ -1,7 +1,6 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from fonts.LetterBlock import LetterBlock
-from fonts.exceptions import LetterNotDefined
 
 SIZE = 4
 alphabet = {}
@@ -9,1704 +8,1463 @@ alphabet = {}
 
 def _add(letter, string):
     global alphabet
-    letter_str = string.strip()
-    assert len(letter_str.split("\n")) == SIZE
-    alphabet[letter] = LetterBlock(letter_str)
-
-_add("|", """
-x
-x
-x
-x
-""")
-
-_add("@","""
-',,, x
- x x x
- x   x
-,''''x
-""")
-
-_add("-", """
-xxx
-''x
-xxx
-xxx
-""")
-
-_add(u"–", """
-xxx
-''x
-xxx
-xxx
-""")
-
-_add("–", """
-xxx
-''x
-xxx
-xxx
-""")
-
-_add("_", """
-xxx
-xxx
-xxx
-,,x
-""")
-
-_add("!", """
-'x
- x
-,x
-,x
-""")
-
-_add("/", """
-xxxxx
-xx',x
-',xxx
-xxxxx
-""")
-
-_add("#", """
-x'x'xx
-, , ,x
-, , ,x
-xxxxxx
-""")
-
-_add(":", """
-xx
-'x
-'x
-xx
-""")
-
-_add(".","""
-xx
-xx
-xx
-,x
-""")
-_add(",","""
-xx
-xx
-xx
- x
-""")
-
-_add("?","""
-x''xx
-,xx x
-xx,xx
-xx,xx
-""")
-
-_add(u"▲","""
-xxxxxx
-xx'xxx
-'   'x
-xxxxxx
-""")
-
-_add(u"▼","""
-xxxxxx
-'''''x
-x, ,xx
-xxxxxx
-""")
-
-_add("%","""
-'xxxx
-xx',x
-',xxx
-xxx,x
-""")
-
-_add("'","""
-'x
-,x
-xx
-xx
-""")
-
-_add(u"’","""
-'x
-,x
-xx
-xx
-""")
-
-_add(u"‘","""
-'x
-,x
-xx
-xx
-""")
-
-_add(u"’","""
-'x
-,x
-xx
-xx
-""")
-
-_add(u"∨","""
-xxxxx
-'xx'x
- '',x
-xxxxx
-""")
-
-_add(u"∧","""
-xxxxx
-'''xx
- xx x
-xxxxx
-""")
-
-_add(u"¬","""
-xxxxx
-''''x
-xxx x
-xxxxx
-""")
-
-_add(u"⇾","""
-xxxxx
-xx'xx
-,, ,x
-xxxxx
-""")
-
-_add(u"⇿","""
-xxxxxx
-x'x'xx
-, , ,x
-xxxxxx
-""")
-
-_add("(","""
-',x
- xx
- xx
-,'x
-""")
-
-_add(u"°","""
-x'xx
-,',x
-xxxx
-xxxx
-""")
-
-_add(")","""
-,'x
-x x
-x x
-',x
-""")
-
-_add("&","""
-xxxx
-x'xx
-, ,x
-xxxx
-""")
-
-_add("=","""
-xxxxx
-''''x
-''''x
-xxxxx
-""")
-
-_add("$","""
-x' 'x
-,''xx
-'xx x
-x, xx
-""")
-
-_add(u"£","""
-xx''x
-' 'xx
-x xxx
-,,,,x
-""")
-
-_add(u"€","""
-xx''x
-' 'xx
-x xxx
-xx,,x
-""")
-
-_add(u"฿","""
-' 'xx
- '',x
- xx x
-, ,xx
-""")
-
-_add(u"₺","""
-x'xxx
-x 'xx
-, x'x
-x,,xx
-""")
-
-_add(u"¥","""
-'xx'x
-,'',x
-x' 'x
-xx,xx
-""")
-
-_add(u"₫","""
-xxx'x
-x , x
-x,,,x
-x,,,x
-""")
-
-_add(u"₽","""
-x'''x
-x ' x
-' 'xx
-x,xxx
-""")
-
-_add(u"㎎","""
-xxxxxxxxxxx
- , ,'x',, x
- x x xx,, x
-xxxxxx,,,xx
-""")
-
-_add(u"㏂","""
-xxxxxxxxxx
-x,'x , ,'x
-', x x x x
-x,,x,x,x,x
-""")
-
-_add(u"㏘","""
-xxxxxxxxxx
- ,'x , ,'x
- ',x x x x
-,xxx,x,x,x
-""")
-
-_add(" ","""
-xxx
-xxx
-xxx
-xxx
-""")
-
-_add("A", """
-x''xx
- xx x
- ,, x
-,xx,x
-""")
-
-_add("B", """
-'''xx
- '',x
- xx x
-,,,xx
-""")
-
-_add("C", """
-x''xx
- xx,x
- xx'x
-x,,xx
-""")
-
-_add("D", """
-'''xx
- xx x
- xx x
-,,,xx
-""")
-
-_add("E", """
-''''x
- ''xx
- xxxx
-,,,,x
-""")
-
-_add("F", """
-''''x
- ''xx
- xxxx
-,xxxx
-""")
-
-_add("G", """
-x''xx
- xx,x
- x, x
-x,,xx
-""")
-
-_add("H", """
-'xx'x
- '' x
- xx x
-,xx,x
-""")
-
-_add("I", """
-'x
- x
- x
-,x
-""")
-
-_add("J", """
-xxx'x
-xxx x
-'xx x
-x,,xx
-""")
-
-_add("K", """
-'xx'x
- ',xx
- x,'x
-,xx,x
-""")
-
-_add("L", """
-'xxxx
- xxxx
- xxxx
-,,,,x
-""")
-
-_add("M", """
-'xxx'x
- ,', x
- xxx x
-,xxx,x
-""")
-
-_add("N", """
-'xx'x
- ,' x
- xx x
-,xx,x
-""")
-
-_add("O", """
-x''xx
- xx x
- xx x
-x,,xx
-""")
-
-_add("P", """
-'''xx
- xx x
- ,,xx
-,xxxx
-""")
-
-_add("Q", """
-x''xx
- xx x
- xx x
-x,,'x
-""")
-
-_add("R", """
-'''xx
- xx x
- ,,'x
-,xx,x
-""")
-
-_add("S", """
-x'''x
-,''xx
-xxx x
-,,,xx
-""")
-
-_add("T", """
-'''x
-x xx
-x xx
-x,xx
-""")
-
-_add("U", """
-'xx'x
- xx x
- xx x
-x,,xx
-""")
-
-_add("V", """
-'xx'x
- xx x
- x',x
-,,xxx
-""")
-
-_add("W", """
-'xxx'x
- xxx x
- ',' x
-,xxx,x
-""")
-
-_add("X", """
-'xx'x
-,'',x
-',,'x
-,xx,x
-""")
-
-_add("Y", """
-'xx'x
-,'' x
-xx',x
-x,xxx
-""")
-
-_add("Z", """
-''''x
-xx',x
-',xxx
-,,,,x
-""")
-
-_add("a", """
-xxxx
-,,'x
-', x
-,,,x
-""")
-
-_add("b", """
-'xxx
- ,'x
- x x
-,,xx
-""")
-
-_add("c", """
-xxxx
-',,x
- xxx
-x,,x
-""")
-
-_add("d", """
-xx'x
-', x
- x x
-x,,x
-""")
-
-_add("e", """
-xxxx
-','x
- ,,x
-x,,x
-""")
-
-_add("f", """
-x'x
- 'x
- xx
-,xx
-""")
-
-_add("g", """
-xxxx
-', x
-,' x
-'',x
-""")
-
-_add("h", """
-'xxx
- ,'x
- x x
-,x,x
-""")
-
-_add("i", """
-'x
-'x
- x
-,x
-""")
-
-_add("j", """
-x'x
-x'x
-x x
-',x
-""")
-
-_add("k", """
-'xxx
- x x
- ,'x
-,x,x
-""")
-
-_add("l", """
-'x
- x
- x
-,x
-""")
-
-_add("m", """
-xxxxxx
- ,','x
- x x x
-,xxx,x
-""")
-
-_add("n", """
-xxxx
- ,'x
- x x
-,x,x
-""")
-
-_add("o", """
-xxxx
-','x
- x x
-x,xx
-""")
-
-_add("p", """
-xxxx
- ,'x
- ',x
- xxx
-""")
-
-_add("q", """
-xxxx
-', x
-,' x
-xx x
-""")
-
-_add("r", """
-xxxx
- ',x
- xxx
-,xxx
-""")
-
-_add("s", """
-xxxx
-',,x
-x,'x
-,,xx
-""")
-
-_add("t", """
-'xx
- ,x
- xx
-x,x
-""")
-
-_add("u", """
-xxxx
- x x
- x x
-x,,x
-""")
-
-_add("v", """
-xxxx
- x x
- x x
-,,xx
-""")
-
-_add("w", """
-xxxxxx
- x x x
- x x x
-,,,,xx
-""")
-
-_add("x", """
-xxxx
-,',x
-x xx
-,x,x
-""")
-
-_add("y", """
-xxxx
- x x
-,' x
-'',x
-""")
-
-_add("z", """
-xxxx
-,, x
-',xx
-,,,x
-""")
-
-_add("1", """
-x'x
-, x
-x x
-x,x
-""")
-
-_add("2", """
-x''xx
-,x',x
-',xxx
-,,,,x
-""")
-
-_add("3", """
-x''xx
-,x',x
-'xx x
-x,,xx
-""")
-
-_add("4", """
-'xxxx
- x'xx
- ' 'x
-xx,xx
-""")
-
-_add("5", """
-''''x
- ''xx
-'xx x
-x,,xx
-""")
-
-_add("6", """
-x''xx
- ''xx
- xx x
-x,,xx
-""")
-
-_add("7", """
-''''x
-xxx x
-x',xx
-x,xxx
-""")
-
-_add("8", """
-x''xx
-,'',x
- xx x
-x,,xx
-""")
-
-_add("9", """
-x''xx
- xx x
-x,, x
-x,,xx
-""")
-
-_add("0", """
-x''xx
- xx x
- xx x
-x,,xx
-""")
-
-_add(u"Đ", """
-x'''xx
-' 'x x
-x xx x
-x,,,xx
-""")
-
-_add(u"Š", """
-x,',
-',,x
-x,'x
-,,xx
-""")
-
-
-_add(u"Ü", """
-'xx'x
-'xx'x
- xx x
-x,,xx
-""")
-
-_add(u"á", """
-',xx
-x,'x
-', x
-,,,x
-""")
-_add(u"ả", """
-',xx
-x,'x
-', x
-,,,x
-""")
-
-_add(u"ã", """
-,,,x
-,,'x
-', x
-,,,x
-""")
-
-_add("ç", """
-xxxx
-',,x
- xxx
-x ,x
-""")
-
-_add(u"é", """
-',xx
-','x
- ,,x
-x,,x
-""")
-
-_add(u"ğ", """
-,',x
-', x
-x, x
-,,xx
-""")
-
-_add(u"í", """
-',x
-'xx
- xx
-,xx
-""")
-
-_add(u"ł", """
-x'xx
-' ,x
-x xx
-x,xx
-""")
-
-_add(u"ñ", """
-'''x
-''xx
- x x
-,x,x
-""")
-
-_add(u"ø", """
-xxxx'x
-x','xx
-x x xx
-,x,xxx
-""")
-
-_add(u"ó", """
-',xx
-x'xx
- x x
-x,xx
-""")
-
-_add(u"ô", """
-'.'x
-x'xx
- x x
-x,xx
-""")
-
-_add(u"ö", """
-'x'x
-x'xx
- x x
-x,xx
-""")
-
-_add("ō", """
-,,,x
-','x
- x x
-x,xx
-""")
-
-_add(u"ộ", """
-'.'x
-x'xx
-,',x
-x'xx
-""")
-
-_add(u"ú", """
-x',x
-'x'x
- x x
-x,,x
-""")
-
-_add(u"ü", """
-'x'x
-'x'x
- x x
-x,,x
-""")
-
-_add(u"ý", """
-x',x
-'x'x
-,, x
-,,xx
-""")
-
-# Cyrillic =====================================================================
-
-_add(u"А", """
-x''xx
- xx x
- ,, x
-,xx,x
-""")
-
-_add(u"Б", """
-''''x
- ''xx
- xx x
-,,,xx
-""")
-
-_add(u"В", """
-'''xx
- '',x
- xx x
-,,,xx
-""")
-
-_add(u"Г", """
-''''x
- xxxx
- xxxx
-,xxxx
-""")
-
-_add(u"Д", """
-x'''x
- xx x
- '' x
-,xx,x
-""")
-
-_add(u"Е", """
-''''x
- ''xx
- xxxx
-,,,,x
-""")
-
-_add(u"Ё", """
-x,x,x
- ,,,x
- ,,xx
-,,,,x
-""")
-
-_add(u"Ж", """
-'xx'xx'x
-x,' ',xx
-',x x,'x
-,xx,xx,x
-""")
-
-_add(u"З", """
-x''xx
-,x',x
-'xx x
-x,,xx
-""")
-
-_add(u"И", """
-'xx'x
- ', x
- xx x
-,xx,x
-""")
-
-_add(u"Й", """
-x,,xx
- x' x
- ,x x
-,xx,x
-""")
-
-_add(u"К", """
-'xx'x
- ',xx
- x,'x
-,xx,x
-""")
-
-_add(u"Л", """
-x'''x
-x x x
-x x x
-,xx,x
-""")
-
-_add(u"М", """
-'xxx'x
- ,', x
- xxx x
-,xxx,x
-""")
-
-_add(u"Н", """
-'xx'x
- '' x
- xx x
-,xx,x
-""")
-
-_add(u"О", """
-x''xx
- xx x
- xx x
-x,,xx
-""")
-
-_add(u"П", """
-''''x
- xx x
- xx x
-,xx,x
-""")
-
-_add(u"Р", """
-'''xx
- xx x
- ,,xx
-,xxxx
-""")
-
-_add(u"С", """
-x''xx
- xx,x
- xx'x
-x,,xx
-""")
-
-_add(u"Т", """
-'''x
-x xx
-x xx
-x,xx
-""")
-
-_add(u"У", """
-'xx'x
-,'' x
-xx',x
-x,xxx
-""")
-
-_add(u"Ф", """
-xx'xxx
-',,,'x
-,''',x
-xx,xxx
-""")
-
-_add(u"Х", """
-'xx'x
-,'',x
-',,'x
-,xx,x
-""")
-
-_add(u"Ц", """
-'xx'x
- xx x
- xx x
-,,, x
-""")
-
-_add(u"Ч", """
-'xx'x
-,'' x
-xxx x
-xxx,x
-""")
-
-_add(u"Ш", """
-'x'x'x
- x x x
- x x x
-,,,,,x
-""")
-
-_add(u"Щ", """
-'x'x'x
- x x x
- x x x
-,,,, x
-""")
-
-_add(u"Ъ", """
-''xxxx
-x ''xx
-x xx x
-x,,,xx
-""")
-
-_add(u"Ы", """
-'xxxx'x
- ''xx x
- xx x x
-,,,xx,x
-""")
-
-_add(u"Ь", """
-'xxxx
- ''xx
- xx x
-,,,xx
-""")
-
-_add(u"Э", """
-x''xx
-,x' x
-'xx x
-x,,xx
-""")
-
-_add(u"Ю", """
- xx''xx
- ' xx x
- x xx x
- xx,,xx
-""")
-
-_add(u"Я", """
-x'''x
- xx x
-',, x
-,xx,x
-""")
-
-_add(u"а", """
-xxxx
-,,'x
-', x
-,,,x
-""")
-
-_add(u"б", """
-x'xx
- ,'x
- x x
-,,xx
-""")
-
-_add(u"в", """
-xxxx
- ,'x
- ,'x
-,,xx
-""")
-
-_add(u"г", """
-xxxx
- ,,x
- xxx
-,xxx
-""")
-
-_add(u"д", """
-xxxx
-', x
- ' x
-,x,x
-""")
-
-_add(u"е", """
-xxxx
-','x
- ,,x
-x,,x
-""")
-
-_add(u"ё", """
-,x,x
-','x
- ,,x
-x,,x
-""")
-
-_add(u"ж", """
-xxxxxx
- x x x
-', ,'x
-,x,x,x
-""")
-
-_add(u"з", """
-xxxx
-,,'x
-,,'x
-,,xx
-""")
-
-_add(u"и", """
-xxxxx
- x' x
- ,x x
-,xx,x
-""")
-
-_add(u"й", """
-,,,,x
- x' x
- ,x x
-,xx,x
-""")
-
-_add(u"к", """
-xxxx
- x x
- ,'x
-,x,x
-""")
-
-_add(u"л", """
-xxxx
-', x
- x x
-,x,x
-""")
-
-_add(u"м", """
-xxxxxx
- 'x' x
- x x x
-,xxx,x
-""")
-
-_add(u"н", """
-xxxx
- x x
- , x
-,x,x
-""")
-
-_add(u"о", """
-xxxx
-','x
- x x
-x,xx
-""")
-
-_add(u"п", """
-xxxx
- , x
- x x
-,x,x
-""")
-
-_add(u"р", """
-xxxx
- ,'x
- ',x
-,xxx
-""")
-
-_add(u"с", """
-xxxx
-',,x
- xxx
-x,,x
-""")
-
-_add(u"т", """
-xxxx
-, ,x
-x xx
-x,xx
-""")
-
-_add(u"у", """
-xxxx
- x x
-x, x
-,,xx
-""")
-
-_add(u"ф", """
-xx'xxx
-x' 'xx
-,''',x
-xx,xxx
-""")
-
-_add(u"х", """
-xxxx
-,',x
-x xx
-,x,x
-""")
-
-_add(u"ц", """
-xxxx
- x x
- x x
-,, x
-""")
-
-_add(u"ч", """
-xxxx
- x x
-x, x
-xx,x
-""")
-
-_add(u"ш", """
-xxxxxx
- x x x
- x x x
-,,,,,x
-""")
-
-_add(u"щ", """
-xxxxxx
- x x x
- x x x
-,,,, x
-""")
-
-_add(u"ъ", """
-xxxx
-, 'xx
-x x x
-x,,xx
-""")
-
-_add(u"ы", """
-xxxxxx
- 'xx x
- x x x
-,,xx,x
-""")
-
-_add(u"ь", """
-xxxx
- 'xx
- x x
-,,xx
-""")
-
-_add(u"э", """
-xxxx
-,,'x
-x, x
-,,xx
-""")
-
-_add(u"ю", """
-xxxxxx
- '','x
- x x x
-xxx,xx
-""")
-
-_add(u"я", """
-xxxxx
-',, x
-',, x
-,xx,x
-""")
-
-# Greek ========================================================================
-
-_add(u"Α", """
-x''xx
- xx x
- ,, x
-,xx,x
-""")
-
-_add(u"Β", """
-'''xx
- '',x
- xx x
-,,,xx
-""")
-
-_add(u"Γ", """
-''''x
- xxxx
- xxxx
-,xxxx
-""")
-
-_add(u"Δ", """
-x''xx
- xx x
- xx x
-,,,,x
-""")
-
-_add(u"Ε", """
-''''x
- ''xx
- xxxx
-,,,,x
-""")
-
-_add(u"Ζ", """
-''''x
-xx',x
-',xxx
-,,,,x
-""")
-
-_add(u"Η", """
-'xx'x
- '' x
- xx x
-,xx,x
-""")
-
-_add(u"Θ", """
-x''xx
- '' x
- xx x
-x,,xx
-""")
-
-_add(u"Ι", """
-'x
- x
- x
-,x
-""")
-
-_add(u"Κ", """
-'xx'x
- ',xx
- x,'x
-,xx,x
-""")
-
-_add(u"Λ", """
-x'''x
- xx x
- xx x
-,xx,x
-""")
-
-_add(u"Μ", """
-'xxx'x
- ,', x
- xxx x
-,xxx,x
-""")
-
-_add(u"Ν", """
-'xx'x
- ,' x
- xx x
-,xx,x
-""")
-
-_add(u"Ξ", """
-''''x
-''''x
-xxxxx
-,,,,x
-""")
-
-_add(u"Ο", """
-x''xx
- xx x
- xx x
-x,,xx
-""")
-
-_add(u"Π", """
-''''x
- xx x
- xx x
-,xx,x
-""")
-
-_add(u"Ρ", """
-'''xx
- xx x
- ,,xx
-,xxxx
-""")
-
-_add(u"Σ", """
-''''x
-,'xxx
-',xxx
-,,,,x
-""")
-
-_add(u"Τ", """
-'''x
-x xx
-x xx
-x,xx
-""")
-
-_add(u"Υ", """
-'xx'x
-,'' x
-xx xx
-xx,xx
-""")
-
-_add(u"Φ", """
-xx'xxx
-', ,'x
-,' ',x
-xx,xxx
-""")
-
-_add(u"Χ", """
-'xx'x
-,'',x
-',,'x
-,xx,x
-""")
-
-_add(u"Ψ", """
-'x'x'x
- x x x
-,' ',x
-xx,xxx
-""")
-
-_add(u"Ω", """
-x'''xx
- xxx x
-,'x',x
-,,x,,x
-""")
-
-_add(u"α", """
-xxxx
-', x
- x x
-x,,x
-""")
-
-_add(u"β", """
-x'xx
- ',x
- ',x
-,xxx
-""")
-
-_add(u"γ", """
-xxxx
- x x
-,',x
-x,xx
-""")
-
-_add(u"δ", """
-x'xx
-,'xx
- x x
-x,xx
-""")
-
-_add(u"ε", """
-xxxx
-',,x
- ,,x
-x,,x
-""")
-
-_add(u"ζ", """
-'''x
-x',x
- xxx
-x,,x
-""")
-
-_add(u"η", """
-xxxx
- ,'x
- x x
-xx,x
-""")
-
-_add(u"θ", """
-x'xx
- ' x
- x x
-x,xx
-""")
-
-_add(u"ι", """
-xx
- x
- x
-,x
-""")
-
-_add(u"κ", """
-xxxx
- x x
- ,'x
-,x,x
-""")
-
-_add(u"λ", """
-''xx
-x' x
- x x
-,x,x
-""")
-
-_add(u"μ", """
-xxxx
- x x
- x x
-,,xx
-""")
-
-_add(u"ν", """
-xxxx
-,,'x
-', x
-,,,x
-""")
-
-_add(u"ξ", """
-'''x
-,''x
-,''x
-xx,x
-""")
-
-_add(u"ο", """
-xxxx
-','x
- x x
-x,xx
-""")
-
-_add(u"π", """
-xxxx
- , x
- x x
-,x,x
-""")
-
-_add(u"ρ", """
-xxxx
-','x
- ',x
-,xxx
-""")
-
-_add(u"σ", """
-xxxxx
-', ,x
- x xx
-x,xxx
-""")
-
-_add(u"ς", """
-xxxx
-',,x
-x,'x
-,,xx
-""")
-
-_add(u"τ", """
-xxxx
-, ,x
-x xx
-xx,x
-""")
-
-_add(u"υ", """
-xxxx
- x x
- x x
-x,xx
-""")
-
-_add(u"φ", """
-xx'xxx
-x' 'xx
-,' ',x
-xx,xxx
-""")
-
-_add(u"χ", """
-xxxx
- x x
-','x
-,x,x
-""")
-
-_add(u"ψ", """
-xxxxxx
- x x x
-,' ',x
-xx,xxx
-""")
-
-_add(u"ω", """
-xxxxxx
-',x,'x
- x x x
-x,,,xx
-""")
-
-# ==============================================================================
-
+    assert len(letter.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(letter)
+
+
+_add("|", "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x")
+
+_add("@", "',,, x\n"
+          " x x x\n"
+          " x   x\n"
+          ",''''x\n"
+          ",''''x")
+
+_add("-", "xxx\n"
+          "''x\n"
+          "xxx\n"
+          "xxx\n"
+          "xxx")
+
+_add(u"–", "xxx\n"
+           "''x\n"
+           "xxx\n"
+           "xxx\n"
+           "xxx")
+
+_add("–", "xxx\n"
+          "''x\n"
+          "xxx\n"
+          "xxx\n"
+          "xxx")
+
+_add("_", "xxx\n"
+          "xxx\n"
+          "xxx\n"
+          ",,x\n"
+          ",,x")
+
+_add("!", "'x\n"
+          " x\n"
+          ",x\n"
+          ",x\n"
+          ",x")
+
+_add("/", "xxxxx\n"
+          "xx',x\n"
+          "',xxx\n"
+          "xxxxx\n"
+          "xxxxx")
+
+_add("#", "x'x'xx\n"
+          ", , ,x\n"
+          ", , ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
+
+_add(":", "xx\n"
+          "'x\n"
+          "'x\n"
+          "xx\n"
+          "xx")
+
+_add(".", "xx\n"
+          "xx\n"
+          "xx\n"
+          ",x\n"
+          ",x")
+_add(",", "xx\n"
+          "xx\n"
+          "xx\n"
+          " x\n"
+          " x")
+
+_add("?", "x''xx\n"
+          ",xx x\n"
+          "xx,xx\n"
+          "xx,xx\n"
+          "xx,xx")
+
+_add(u"▲", "xxxxxx\n"
+           "xx'xxx\n"
+           "'   'x\n"
+           "xxxxxx\n"
+           "xxxxxx")
+
+_add(u"▼", "xxxxxx\n"
+           "'''''x\n"
+           "x, ,xx\n"
+           "xxxxxx\n"
+           "xxxxxx")
+
+_add("%", "'xxxx\n"
+          "xx',x\n"
+          "',xxx\n"
+          "xxx,x\n"
+          "xxx,x")
+
+_add("'", "'x\n"
+          ",x\n"
+          "xx\n"
+          "xx\n"
+          "xx")
+
+_add(u"’", "'x\n"
+           ",x\n"
+           "xx\n"
+           "xx\n"
+           "xx")
+
+_add(u"‘", "'x\n"
+           ",x\n"
+           "xx\n"
+           "xx\n"
+           "xx")
+
+_add(u"’", "'x\n"
+           ",x\n"
+           "xx\n"
+           "xx\n"
+           "xx")
+
+_add(u"∨", "xxxxx\n"
+           "'xx'x\n"
+           " '',x\n"
+           "xxxxx\n"
+           "xxxxx")
+
+_add(u"∧", "xxxxx\n"
+           "'''xx\n"
+           " xx x\n"
+           "xxxxx\n"
+           "xxxxx")
+
+_add(u"¬", "xxxxx\n"
+           "''''x\n"
+           "xxx x\n"
+           "xxxxx\n"
+           "xxxxx")
+
+_add(u"⇾", "xxxxx\n"
+           "xx'xx\n"
+           ",, ,x\n"
+           "xxxxx\n"
+           "xxxxx")
+
+_add(u"⇿", "xxxxxx\n"
+           "x'x'xx\n"
+           ", , ,x\n"
+           "xxxxxx\n"
+           "xxxxxx")
+
+_add("(", "',x\n"
+          " xx\n"
+          " xx\n"
+          ",'x\n"
+          ",'x")
+
+_add(u"°", "x'xx\n"
+           ",',x\n"
+           "xxxx\n"
+           "xxxx\n"
+           "xxxx")
+
+_add(")", ",'x\n"
+          "x x\n"
+          "x x\n"
+          "',x\n"
+          "',x")
+
+_add("&", "xxxx\n"
+          "x'xx\n"
+          ", ,x\n"
+          "xxxx\n"
+          "xxxx")
+
+_add("=", "xxxxx\n"
+          "''''x\n"
+          "''''x\n"
+          "xxxxx\n"
+          "xxxxx")
+
+_add("$", "x' 'x\n"
+          ",''xx\n"
+          "'xx x\n"
+          "x, xx\n"
+          "x, xx")
+
+_add(u"£", "xx''x\n"
+           "' 'xx\n"
+           "x xxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"€", "xx''x\n"
+           "' 'xx\n"
+           "x xxx\n"
+           "xx,,x\n"
+           "xx,,x")
+
+_add(u"฿", "' 'xx\n"
+           " '',x\n"
+           " xx x\n"
+           ", ,xx\n"
+           ", ,xx")
+
+_add(u"₺", "x'xxx\n"
+           "x 'xx\n"
+           ", x'x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"¥", "'xx'x\n"
+           ",'',x\n"
+           "x' 'x\n"
+           "xx,xx\n"
+           "xx,xx")
+
+_add(u"₫", "xxx'x\n"
+           "x , x\n"
+           "x,,,x\n"
+           "x,,,x\n"
+           "x,,,x")
+
+_add(u"₽", "x'''x\n"
+           "x ' x\n"
+           "' 'xx\n"
+           "x,xxx\n"
+           "x,xxx")
+
+_add(u"㎎", "xxxxxxxxxxx\n"
+           " , ,'x',, x\n"
+           " x x xx,, x\n"
+           "xxxxxx,,,xx\n"
+           "xxxxxx,,,xx")
+
+_add(u"㏂", "xxxxxxxxxx\n"
+           "x,'x , ,'x\n"
+           "', x x x x\n"
+           "x,,x,x,x,x\n"
+           "x,,x,x,x,x")
+
+_add(u"㏘", "xxxxxxxxxx\n"
+           " ,'x , ,'x\n"
+           " ',x x x x\n"
+           ",xxx,x,x,x\n"
+           ",xxx,x,x,x")
+
+_add(" ", "xxx\n"
+          "xxx\n"
+          "xxx\n"
+          "xxx\n"
+          "xxx")
+
+_add("A", "x''xx\n"
+          " xx x\n"
+          " ,, x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("B", "'''xx\n"
+          " '',x\n"
+          " xx x\n"
+          ",,,xx\n"
+          ",,,xx")
+
+_add("C", "x''xx\n"
+          " xx,x\n"
+          " xx'x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("D", "'''xx\n"
+          " xx x\n"
+          " xx x\n"
+          ",,,xx\n"
+          ",,,xx")
+
+_add("E", "''''x\n"
+          " ''xx\n"
+          " xxxx\n"
+          ",,,,x\n"
+          ",,,,x")
+
+_add("F", "''''x\n"
+          " ''xx\n"
+          " xxxx\n"
+          ",xxxx\n"
+          ",xxxx")
+
+_add("G", "x''xx\n"
+          " xx,x\n"
+          " x, x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("H", "'xx'x\n"
+          " '' x\n"
+          " xx x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("I", "'x\n"
+          " x\n"
+          " x\n"
+          ",x\n"
+          ",x")
+
+_add("J", "xxx'x\n"
+          "xxx x\n"
+          "'xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("K", "'xx'x\n"
+          " ',xx\n"
+          " x,'x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("L", "'xxxx\n"
+          " xxxx\n"
+          " xxxx\n"
+          ",,,,x\n"
+          ",,,,x")
+
+_add("M", "'xxx'x\n"
+          " ,', x\n"
+          " xxx x\n"
+          ",xxx,x\n"
+          ",xxx,x")
+
+_add("N", "'xx'x\n"
+          " ,' x\n"
+          " xx x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("O", "x''xx\n"
+          " xx x\n"
+          " xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("P", "'''xx\n"
+          " xx x\n"
+          " ,,xx\n"
+          ",xxxx\n"
+          ",xxxx")
+
+_add("Q", "x''xx\n"
+          " xx x\n"
+          " xx x\n"
+          "x,,'x\n"
+          "x,,'x")
+
+_add("R", "'''xx\n"
+          " xx x\n"
+          " ,,'x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("S", "x'''x\n"
+          ",''xx\n"
+          "xxx x\n"
+          ",,,xx\n"
+          ",,,xx")
+
+_add("T", "'''x\n"
+          "x xx\n"
+          "x xx\n"
+          "x,xx\n"
+          "x,xx")
+
+_add("U", "'xx'x\n"
+          " xx x\n"
+          " xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("V", "'xx'x\n"
+          " xx x\n"
+          " x',x\n"
+          ",,xxx\n"
+          ",,xxx")
+
+_add("W", "'xxx'x\n"
+          " xxx x\n"
+          " ',' x\n"
+          ",xxx,x\n"
+          ",xxx,x")
+
+_add("X", "'xx'x\n"
+          ",'',x\n"
+          "',,'x\n"
+          ",xx,x\n"
+          ",xx,x")
+
+_add("Y", "'xx'x\n"
+          ",'' x\n"
+          "xx',x\n"
+          "x,xxx\n"
+          "x,xxx")
+
+_add("Z", "''''x\n"
+          "xx',x\n"
+          "',xxx\n"
+          ",,,,x\n"
+          ",,,,x")
+
+_add("a", "xxxx\n"
+          ",,'x\n"
+          "', x\n"
+          ",,,x\n"
+          ",,,x")
+
+_add("b", "'xxx\n"
+          " ,'x\n"
+          " x x\n"
+          ",,xx\n"
+          ",,xx")
+
+_add("c", "xxxx\n"
+          "',,x\n"
+          " xxx\n"
+          "x,,x\n"
+          "x,,x")
+
+_add("d", "xx'x\n"
+          "', x\n"
+          " x x\n"
+          "x,,x\n"
+          "x,,x")
+
+_add("e", "xxxx\n"
+          "','x\n"
+          " ,,x\n"
+          "x,,x\n"
+          "x,,x")
+
+_add("f", "x'x\n"
+          " 'x\n"
+          " xx\n"
+          ",xx\n"
+          ",xx")
+
+_add("g", "xxxx\n"
+          "', x\n"
+          ",' x\n"
+          "'',x\n"
+          "'',x")
+
+_add("h", "'xxx\n"
+          " ,'x\n"
+          " x x\n"
+          ",x,x\n"
+          ",x,x")
+
+_add("i", "'x\n"
+          "'x\n"
+          " x\n"
+          ",x\n"
+          ",x")
+
+_add("j", "x'x\n"
+          "x'x\n"
+          "x x\n"
+          "',x\n"
+          "',x")
+
+_add("k", "'xxx\n"
+          " x x\n"
+          " ,'x\n"
+          ",x,x\n"
+          ",x,x")
+
+_add("l", "'x\n"
+          " x\n"
+          " x\n"
+          ",x\n"
+          ",x")
+
+_add("m", "xxxxxx\n"
+          " ,','x\n"
+          " x x x\n"
+          ",xxx,x\n"
+          ",xxx,x")
+
+_add("n", "xxxx\n"
+          " ,'x\n"
+          " x x\n"
+          ",x,x\n"
+          ",x,x")
+
+_add("o", "xxxx\n"
+          "','x\n"
+          " x x\n"
+          "x,xx\n"
+          "x,xx")
+
+_add("p", "xxxx\n"
+          " ,'x\n"
+          " ',x\n"
+          " xxx\n"
+          " xxx")
+
+_add("q", "xxxx\n"
+          "', x\n"
+          ",' x\n"
+          "xx x\n"
+          "xx x")
+
+_add("r", "xxxx\n"
+          " ',x\n"
+          " xxx\n"
+          ",xxx\n"
+          ",xxx")
+
+_add("s", "xxxx\n"
+          "',,x\n"
+          "x,'x\n"
+          ",,xx\n"
+          ",,xx")
+
+_add("t", "'xx\n"
+          " ,x\n"
+          " xx\n"
+          "x,x\n"
+          "x,x")
+
+_add("u", "xxxx\n"
+          " x x\n"
+          " x x\n"
+          "x,,x\n"
+          "x,,x")
+
+_add("v", "xxxx\n"
+          " x x\n"
+          " x x\n"
+          ",,xx\n"
+          ",,xx")
+
+_add("w", "xxxxxx\n"
+          " x x x\n"
+          " x x x\n"
+          ",,,,xx\n"
+          ",,,,xx")
+
+_add("x", "xxxx\n"
+          ",',x\n"
+          "x xx\n"
+          ",x,x\n"
+          ",x,x")
+
+_add("y", "xxxx\n"
+          " x x\n"
+          ",' x\n"
+          "'',x\n"
+          "'',x")
+
+_add("z", "xxxx\n"
+          ",, x\n"
+          "',xx\n"
+          ",,,x\n"
+          ",,,x")
+
+_add("1", "x'x\n"
+          ", x\n"
+          "x x\n"
+          "x,x\n"
+          "x,x")
+
+_add("2", "x''xx\n"
+          ",x',x\n"
+          "',xxx\n"
+          ",,,,x\n"
+          ",,,,x")
+
+_add("3", "x''xx\n"
+          ",x',x\n"
+          "'xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("4", "'xxxx\n"
+          " x'xx\n"
+          " ' 'x\n"
+          "xx,xx\n"
+          "xx,xx")
+
+_add("5", "''''x\n"
+          " ''xx\n"
+          "'xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("6", "x''xx\n"
+          " ''xx\n"
+          " xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("7", "''''x\n"
+          "xxx x\n"
+          "x',xx\n"
+          "x,xxx\n"
+          "x,xxx")
+
+_add("8", "x''xx\n"
+          ",'',x\n"
+          " xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("9", "x''xx\n"
+          " xx x\n"
+          "x,, x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add("0", "x''xx\n"
+          " xx x\n"
+          " xx x\n"
+          "x,,xx\n"
+          "x,,xx")
+
+_add(u"Đ", "x'''xx\n"
+           "' 'x x\n"
+           "x xx x\n"
+           "x,,,xx\n"
+           "x,,,xx")
+
+_add(u"Š", "x,',\n"
+           "',,x\n"
+           "x,'x\n"
+           ",,xx\n"
+           ",,xx")
+
+
+_add(u"Ü", "'xx'x\n"
+           "'xx'x\n"
+           " xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"á", "',xx\n"
+           "x,'x\n"
+           "', x\n"
+           ",,,x\n"
+           ",,,x")
+
+_add(u"ả", "',xx\n"
+           "x,'x\n"
+           "', x\n"
+           ",,,x\n"
+           ",,,x")
+
+_add(u"ã", ",,,x\n"
+           ",,'x\n"
+           "', x\n"
+           ",,,x\n"
+           ",,,x")
+
+_add("ç", "xxxx\n"
+          "',,x\n"
+          " xxx\n"
+          "x ,x\n"
+          "x ,x")
+
+_add(u"é", "',xx\n"
+           "','x\n"
+           " ,,x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ğ", ",',x\n"
+           "', x\n"
+           "x, x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"í", "',x\n"
+           "'xx\n"
+           " xx\n"
+           ",xx\n"
+           ",xx")
+
+_add(u"ł", "x'xx\n"
+           "' ,x\n"
+           "x xx\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"ñ", "'''x\n"
+           "''xx\n"
+           " x x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"ø", "xxxx'x\n"
+           "x','xx\n"
+           "x x xx\n"
+           ",x,xxx\n"
+           ",x,xxx")
+
+_add(u"ó", "',xx\n"
+           "x'xx\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"ô", "'.'x\n"
+           "x'xx\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"ö", "'x'x\n"
+           "x'xx\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add("ō", ",,,x\n"
+          "','x\n"
+          " x x\n"
+          "x,xx\n"
+          "x,xx")
+
+_add(u"ộ", "'.'x\n"
+           "x'xx\n"
+           ",',x\n"
+           "x'xx\n"
+           "x'xx")
+
+_add(u"ú", "x',x\n"
+           "'x'x\n"
+           " x x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ü", "'x'x\n"
+           "'x'x\n"
+           " x x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ý", "x',x\n"
+           "'x'x\n"
+           ",, x\n"
+           ",,xx\n"
+           ",,xx")
+
+# Cyrillic ===========================================
+
+_add(u"А", "x''xx\n"
+           " xx x\n"
+           " ,, x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Б", "''''x\n"
+           " ''xx\n"
+           " xx x\n"
+           ",,,xx\n"
+           ",,,xx")
+
+_add(u"В", "'''xx\n"
+           " '',x\n"
+           " xx x\n"
+           ",,,xx\n"
+           ",,,xx")
+
+_add(u"Г", "''''x\n"
+           " xxxx\n"
+           " xxxx\n"
+           ",xxxx\n"
+           ",xxxx")
+
+_add(u"Д", "x'''x\n"
+           " xx x\n"
+           " '' x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Е", "''''x\n"
+           " ''xx\n"
+           " xxxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Ё", "x,x,x\n"
+           " ,,,x\n"
+           " ,,xx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Ж", "'xx'xx'x\n"
+           "x,' ',xx\n"
+           "',x x,'x\n"
+           ",xx,xx,x\n"
+           ",xx,xx,x")
+
+_add(u"З", "x''xx\n"
+           ",x',x\n"
+           "'xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"И", "'xx'x\n"
+           " ', x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Й", "x,,xx\n"
+           " x' x\n"
+           " ,x x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"К", "'xx'x\n"
+           " ',xx\n"
+           " x,'x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Л", "x'''x\n"
+           "x x x\n"
+           "x x x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"М", "'xxx'x\n"
+           " ,', x\n"
+           " xxx x\n"
+           ",xxx,x\n"
+           ",xxx,x")
+
+_add(u"Н", "'xx'x\n"
+           " '' x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"О", "x''xx\n"
+           " xx x\n"
+           " xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"П", "''''x\n"
+           " xx x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Р", "'''xx\n"
+           " xx x\n"
+           " ,,xx\n"
+           ",xxxx\n"
+           ",xxxx")
+
+_add(u"С", "x''xx\n"
+           " xx,x\n"
+           " xx'x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"Т", "'''x\n"
+           "x xx\n"
+           "x xx\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"У", "'xx'x\n"
+           ",'' x\n"
+           "xx',x\n"
+           "x,xxx\n"
+           "x,xxx")
+
+_add(u"Ф", "xx'xxx\n"
+           "',,,'x\n"
+           ",''',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"Х", "'xx'x\n"
+           ",'',x\n"
+           "',,'x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Ц", "'xx'x\n"
+           " xx x\n"
+           " xx x\n"
+           ",,, x\n"
+           ",,, x")
+
+_add(u"Ч", "'xx'x\n"
+           ",'' x\n"
+           "xxx x\n"
+           "xxx,x\n"
+           "xxx,x")
+
+_add(u"Ш", "'x'x'x\n"
+           " x x x\n"
+           " x x x\n"
+           ",,,,,x\n"
+           ",,,,,x")
+
+_add(u"Щ", "'x'x'x\n"
+           " x x x\n"
+           " x x x\n"
+           ",,,, x\n"
+           ",,,, x")
+
+_add(u"Ъ", "''xxxx\n"
+           "x ''xx\n"
+           "x xx x\n"
+           "x,,,xx\n"
+           "x,,,xx")
+
+_add(u"Ы", "'xxxx'x\n"
+           " ''xx x\n"
+           " xx x x\n"
+           ",,,xx,x\n"
+           ",,,xx,x")
+
+_add(u"Ь", "'xxxx\n"
+           " ''xx\n"
+           " xx x\n"
+           ",,,xx\n"
+           ",,,xx")
+
+_add(u"Э", "x''xx\n"
+           ",x' x\n"
+           "'xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"Ю", " xx''xx\n"
+           " ' xx x\n"
+           " x xx x\n"
+           " xx,,xx\n"
+           " xx,,xx")
+
+_add(u"Я", "x'''x\n"
+           " xx x\n"
+           "',, x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"а", "xxxx\n"
+           ",,'x\n"
+           "', x\n"
+           ",,,x\n"
+           ",,,x")
+
+_add(u"б", "x'xx\n"
+           " ,'x\n"
+           " x x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"в", "xxxx\n"
+           " ,'x\n"
+           " ,'x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"г", "xxxx\n"
+           " ,,x\n"
+           " xxx\n"
+           ",xxx\n"
+           ",xxx")
+
+_add(u"д", "xxxx\n"
+           "', x\n"
+           " ' x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"е", "xxxx\n"
+           "','x\n"
+           " ,,x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ё", ",x,x\n"
+           "','x\n"
+           " ,,x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ж", "xxxxxx\n"
+           " x x x\n"
+           "', ,'x\n"
+           ",x,x,x\n"
+           ",x,x,x")
+
+_add(u"з", "xxxx\n"
+           ",,'x\n"
+           ",,'x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"и", "xxxxx\n"
+           " x' x\n"
+           " ,x x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"й", ",,,,x\n"
+           " x' x\n"
+           " ,x x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"к", "xxxx\n"
+           " x x\n"
+           " ,'x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"л", "xxxx\n"
+           "', x\n"
+           " x x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"м", "xxxxxx\n"
+           " 'x' x\n"
+           " x x x\n"
+           ",xxx,x\n"
+           ",xxx,x")
+
+_add(u"н", "xxxx\n"
+           " x x\n"
+           " , x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"о", "xxxx\n"
+           "','x\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"п", "xxxx\n"
+           " , x\n"
+           " x x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"р", "xxxx\n"
+           " ,'x\n"
+           " ',x\n"
+           ",xxx\n"
+           ",xxx")
+
+_add(u"с", "xxxx\n"
+           "',,x\n"
+           " xxx\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"т", "xxxx\n"
+           ", ,x\n"
+           "x xx\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"у", "xxxx\n"
+           " x x\n"
+           "x, x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"ф", "xx'xxx\n"
+           "x' 'xx\n"
+           ",''',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"х", "xxxx\n"
+           ",',x\n"
+           "x xx\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"ц", "xxxx\n"
+           " x x\n"
+           " x x\n"
+           ",, x\n"
+           ",, x")
+
+_add(u"ч", "xxxx\n"
+           " x x\n"
+           "x, x\n"
+           "xx,x\n"
+           "xx,x")
+
+_add(u"ш", "xxxxxx\n"
+           " x x x\n"
+           " x x x\n"
+           ",,,,,x\n"
+           ",,,,,x")
+
+_add(u"щ", "xxxxxx\n"
+           " x x x\n"
+           " x x x\n"
+           ",,,, x\n"
+           ",,,, x")
+
+_add(u"ъ", "xxxx\n"
+           ", 'xx\n"
+           "x x x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"ы", "xxxxxx\n"
+           " 'xx x\n"
+           " x x x\n"
+           ",,xx,x\n"
+           ",,xx,x")
+
+_add(u"ь", "xxxx\n"
+           " 'xx\n"
+           " x x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"э", "xxxx\n"
+           ",,'x\n"
+           "x, x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"ю", "xxxxxx\n"
+           " '','x\n"
+           " x x x\n"
+           "xxx,xx\n"
+           "xxx,xx")
+
+_add(u"я", "xxxxx\n"
+           "',, x\n"
+           "',, x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+# Greek ===========================================
+
+_add(u"Α", "x''xx\n"
+           " xx x\n"
+           " ,, x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Β", "'''xx\n"
+           " '',x\n"
+           " xx x\n"
+           ",,,xx\n"
+           ",,,xx")
+
+_add(u"Γ", "''''x\n"
+           " xxxx\n"
+           " xxxx\n"
+           ",xxxx\n"
+           ",xxxx")
+
+_add(u"Δ", "x''xx\n"
+           " xx x\n"
+           " xx x\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Ε", "''''x\n"
+           " ''xx\n"
+           " xxxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Ζ", "''''x\n"
+           "xx',x\n"
+           "',xxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Η", "'xx'x\n"
+           " '' x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Θ", "x''xx\n"
+           " '' x\n"
+           " xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"Ι", "'x\n"
+           " x\n"
+           " x\n"
+           ",x\n"
+           ",x")
+
+_add(u"Κ", "'xx'x\n"
+           " ',xx\n"
+           " x,'x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Λ", "x'''x\n"
+           " xx x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Μ", "'xxx'x\n"
+           " ,', x\n"
+           " xxx x\n"
+           ",xxx,x\n"
+           ",xxx,x")
+
+_add(u"Ν", "'xx'x\n"
+           " ,' x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Ξ", "''''x\n"
+           "''''x\n"
+           "xxxxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Ο", "x''xx\n"
+           " xx x\n"
+           " xx x\n"
+           "x,,xx\n"
+           "x,,xx")
+
+_add(u"Π", "''''x\n"
+           " xx x\n"
+           " xx x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Ρ", "'''xx\n"
+           " xx x\n"
+           " ,,xx\n"
+           ",xxxx\n"
+           ",xxxx")
+
+_add(u"Σ", "''''x\n"
+           ",'xxx\n"
+           "',xxx\n"
+           ",,,,x\n"
+           ",,,,x")
+
+_add(u"Τ", "'''x\n"
+           "x xx\n"
+           "x xx\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"Υ", "'xx'x\n"
+           ",'' x\n"
+           "xx xx\n"
+           "xx,xx\n"
+           "xx,xx")
+
+_add(u"Φ", "xx'xxx\n"
+           "', ,'x\n"
+           ",' ',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"Χ", "'xx'x\n"
+           ",'',x\n"
+           "',,'x\n"
+           ",xx,x\n"
+           ",xx,x")
+
+_add(u"Ψ", "'x'x'x\n"
+           " x x x\n"
+           ",' ',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"Ω", "x'''xx\n"
+           " xxx x\n"
+           ",'x',x\n"
+           ",,x,,x\n"
+           ",,x,,x")
+
+_add(u"α", "xxxx\n"
+           "', x\n"
+           " x x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"β", "x'xx\n"
+           " ',x\n"
+           " ',x\n"
+           ",xxx\n"
+           ",xxx")
+
+_add(u"γ", "xxxx\n"
+           " x x\n"
+           ",',x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"δ", "x'xx\n"
+           ",'xx\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"ε", "xxxx\n"
+           "',,x\n"
+           " ,,x\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"ζ", "'''x\n"
+           "x',x\n"
+           " xxx\n"
+           "x,,x\n"
+           "x,,x")
+
+_add(u"η", "xxxx\n"
+           " ,'x\n"
+           " x x\n"
+           "xx,x\n"
+           "xx,x")
+
+_add(u"θ", "x'xx\n"
+           " ' x\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"ι", "xx\n"
+           " x\n"
+           " x\n"
+           ",x\n"
+           ",x")
+
+_add(u"κ", "xxxx\n"
+           " x x\n"
+           " ,'x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"λ", "''xx\n"
+           "x' x\n"
+           " x x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"μ", "xxxx\n"
+           " x x\n"
+           " x x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"ν", "xxxx\n"
+           ",,'x\n"
+           "', x\n"
+           ",,,x\n"
+           ",,,x")
+
+_add(u"ξ", "'''x\n"
+           ",''x\n"
+           ",''x\n"
+           "xx,x\n"
+           "xx,x")
+
+_add(u"ο", "xxxx\n"
+           "','x\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"π", "xxxx\n"
+           " , x\n"
+           " x x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"ρ", "xxxx\n"
+           "','x\n"
+           " ',x\n"
+           ",xxx\n"
+           ",xxx")
+
+_add(u"σ", "xxxxx\n"
+           "', ,x\n"
+           " x xx\n"
+           "x,xxx\n"
+           "x,xxx")
+
+_add(u"ς", "xxxx\n"
+           "',,x\n"
+           "x,'x\n"
+           ",,xx\n"
+           ",,xx")
+
+_add(u"τ", "xxxx\n"
+           ", ,x\n"
+           "x xx\n"
+           "xx,x\n"
+           "xx,x")
+
+_add(u"υ", "xxxx\n"
+           " x x\n"
+           " x x\n"
+           "x,xx\n"
+           "x,xx")
+
+_add(u"φ", "xx'xxx\n"
+           "x' 'xx\n"
+           ",' ',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"χ", "xxxx\n"
+           " x x\n"
+           "','x\n"
+           ",x,x\n"
+           ",x,x")
+
+_add(u"ψ", "xxxxxx\n"
+           " x x x\n"
+           ",' ',x\n"
+           "xx,xxx\n"
+           "xx,xxx")
+
+_add(u"ω", "xxxxxx\n"
+           "',x,'x\n"
+           " x x x\n"
+           "x,,,xx\n"
+           "x,,,xx")
+
+# ===========================================
 
 
 def get_letter(char):
     try:
         return alphabet[char]
-    except KeyError as e:
-        return LetterBlock("""
-xxxxx
- ,, x
- '' x
-xxxxx
-""".strip())
+    except KeyError:
+        return LetterBlock("xxxxx\n"
+                           " ,, x\n"
+                           " '' x\n"
+                           "xxxxx\n"
+                           "xxxxx")

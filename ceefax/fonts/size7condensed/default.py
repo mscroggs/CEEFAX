@@ -1,5 +1,4 @@
 from fonts.LetterBlock import LetterBlock
-from fonts.exceptions import LetterNotDefined
 
 SIZE = 7
 alphabet = {}
@@ -11,563 +10,509 @@ def _add(letter, string):
     assert len(letter_str.split("\n")) == SIZE
     alphabet[letter] = LetterBlock(letter_str)
 
-_add("|", """
-x
-x
-x
-x
-x
-x
-x
-""")
 
-_add("-", """
-xx
-xx
-xx
- x
-xx
-xx
-xx
-""")
+_add("|", "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x")
 
-_add("&", """
-xxxx
-xxxx
-x xx
-   x
-x xx
-xxxx
-xxxx
-""")
+_add("-", "xx\n"
+          "xx\n"
+          "xx\n"
+          " x\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx")
 
-_add("'", """
- x
- x
-xx
-xx
-xx
-xx
-xx
-""")
+_add("&", "xxxx\n"
+          "xxxx\n"
+          "x xx\n"
+          "   x\n"
+          "x xx\n"
+          "xxxx\n"
+          "xxxx\n"
+          "xxxx")
 
-_add("(", """
-xxx
-' x
- 'x
- 'x
- 'x
-, x
-xxx
-""")
+_add("'", " x\n"
+          " x\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx")
 
-_add(")", """
-xxx
- 'x
-' x
-' x
-' x
- ,x
-xxx
-""")
+_add("(", "xxx\n"
+          "' x\n"
+          " 'x\n"
+          " 'x\n"
+          " 'x\n"
+          ", x\n"
+          "xxx\n"
+          "xxx")
 
-_add("!", """
-xxx
-  x
-  x
-  x
-xxx
-  x
-xxx
-""")
+_add(")", "xxx\n"
+          " 'x\n"
+          "' x\n"
+          "' x\n"
+          "' x\n"
+          " ,x\n"
+          "xxx\n"
+          "xxx")
 
-_add("?", """
-xxxxxx
-'   'x
-,,x  x
-xx  ,x
-xx,,xx
-xx  xx
-xxxxxx
-""")
+_add("!", "xxx\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "xxx\n"
+          "  x\n"
+          "xxx\n"
+          "xxx")
 
-_add("/", """
-xxxxxx
-xxxx x
-xxx xx
-xx xxx
-x xxxx
- xxxxx
-xxxxxx
-""")
+_add("?", "xxxxxx\n"
+          "'   'x\n"
+          ",,x  x\n"
+          "xx  ,x\n"
+          "xx,,xx\n"
+          "xx  xx\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add(" ","""
-xx
-xx
-xx
-xx
-xx
-xx
-xx
-""")
+_add("/", "xxxxxx\n"
+          "xxxx x\n"
+          "xxx xx\n"
+          "xx xxx\n"
+          "x xxxx\n"
+          " xxxxx\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("A", """
-xxxxxx
-'   'x
-  x  x
-     x
-  x  x
-  x  x
-xxxxxx
-""")
+_add(" ", "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx")
 
-_add("B", """
-xxxxxx
-    'x
-  x  x
-    'x
-  x  x
-    ,x
-xxxxxx
-""")
+_add("A", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          "     x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("C", """
-xxxxx
-'   x
-  xxx
-  xxx
-  xxx
-,   x
-xxxxx
-""")
+_add("B", "xxxxxx\n"
+          "    'x\n"
+          "  x  x\n"
+          "    'x\n"
+          "  x  x\n"
+          "    ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("D", """
-xxxxxx
-    'x
-  x  x
-  x  x
-  x  x
-    ,x
-xxxxxx
-""")
+_add("C", "xxxxx\n"
+          "'   x\n"
+          "  xxx\n"
+          "  xxx\n"
+          "  xxx\n"
+          ",   x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("E", """
-xxxxx
-    x
-  xxx
-   xx
-  xxx
-    x
-xxxxx
-""")
+_add("D", "xxxxxx\n"
+          "    'x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "    ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("F", """
-xxxxx
-    x
-  xxx
-   xx
-  xxx
-  xxx
-xxxxx
-""")
+_add("E", "xxxxx\n"
+          "    x\n"
+          "  xxx\n"
+          "   xx\n"
+          "  xxx\n"
+          "    x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("G", """
-xxxxxx
-'   'x
-  xxxx
-  x''x
-  x  x
-,    x
-xxxxxx
-""")
+_add("F", "xxxxx\n"
+          "    x\n"
+          "  xxx\n"
+          "   xx\n"
+          "  xxx\n"
+          "  xxx\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("H", """
-xxxxxx
-  x  x
-  x  x
-     x
-  x  x
-  x  x
-xxxxxx
-""")
+_add("G", "xxxxxx\n"
+          "'   'x\n"
+          "  xxxx\n"
+          "  x''x\n"
+          "  x  x\n"
+          ",    x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("I", """
-xxx
-  x
-  x
-  x
-  x
-  x
-xxx
-""")
+_add("H", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "     x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("J", """
-xxxxx
-xx  x
-xx  x
-xx  x
-xx  x
-   ,x
-xxxxx
-""")
+_add("I", "xxx\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "xxx\n"
+          "xxx")
 
-_add("K", """
-xxxxxx
-  x  x
-  x ,x
-   'xx
-  x  x
-  x  x
-xxxxxx
-""")
+_add("J", "xxxxx\n"
+          "xx  x\n"
+          "xx  x\n"
+          "xx  x\n"
+          "xx  x\n"
+          "   ,x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("L", """
-xxxxx
-  xxx
-  xxx
-  xxx
-  xxx
-    x
-xxxxx
-""")
+_add("K", "xxxxxx\n"
+          "  x  x\n"
+          "  x ,x\n"
+          "   'xx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("M", """
-xxxxxx
- 'x' x
-     x
-  x  x
-  x  x
-  x  x
-xxxxxx
-""")
+_add("L", "xxxxx\n"
+          "  xxx\n"
+          "  xxx\n"
+          "  xxx\n"
+          "  xxx\n"
+          "    x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("N", """
-xxxxxx
-    'x
-  x  x
-  x  x
-  x  x
-  x  x
-xxxxxx
-""")
+_add("M", "xxxxxx\n"
+          " 'x' x\n"
+          "     x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("O", """
-xxxxxx
-'   'x
-  x  x
-  x  x
-  x  x
-,   ,x
-xxxxxx
-""")
+_add("N", "xxxxxx\n"
+          "    'x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("P", """
-xxxxxx
-    'x
-  x  x
-    ,x
-  xxxx
-  xxxx
-xxxxxx
-""")
+_add("O", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("Q", """
-xxxxxx
-'   'x
-  x  x
-  x  x
-  x  x
-,    x
-xxxxxx
-""")
+_add("P", "xxxxxx\n"
+          "    'x\n"
+          "  x  x\n"
+          "    ,x\n"
+          "  xxxx\n"
+          "  xxxx\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("R", """
-xxxxxx
-    'x
-  x  x
-    ,x
-  x  x
-  x  x
-xxxxxx
-""")
+_add("Q", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          ",    x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("S", """
-xxxxx
-'   x
-  xxx
-,  'x
-xx  x
-   ,x
-xxxxx
-""")
+_add("R", "xxxxxx\n"
+          "    'x\n"
+          "  x  x\n"
+          "    ,x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("T", """
-xxxxx
-    x
-x  xx
-x  xx
-x  xx
-x  xx
-xxxxx
-""")
+_add("S", "xxxxx\n"
+          "'   x\n"
+          "  xxx\n"
+          ",  'x\n"
+          "xx  x\n"
+          "   ,x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("U", """
-xxxxxx
-  x  x
-  x  x
-  x  x
-  x  x
-,   ,x
-xxxxxx
-""")
+_add("T", "xxxxx\n"
+          "    x\n"
+          "x  xx\n"
+          "x  xx\n"
+          "x  xx\n"
+          "x  xx\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("V", """
-xxxxxx
-  x  x
-  x  x
-  x  x
-  x  x
-   ,xx
-xxxxxx
-""")
+_add("U", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("W", """
-xxxxxx
-  x  x
-  x  x
-  x  x
-     x
- ,x, x
-xxxxxx
-""")
+_add("V", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "   ,xx\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("X", """
-xxxxxx
-  x  x
-  x  x
-x   xx
-  x  x
-  x  x
-xxxxxx
-""")
+_add("W", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "     x\n"
+          " ,x, x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("Y", """
-xxxxxx
-  x  x
-  x  x
-,    x
-xxx  x
-x   ,x
-xxxxxx
-""")
+_add("X", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "x   xx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("Z", """
-xxxxx
-    x
-xx' x
-x   x
- ,xxx
-    x
-xxxxx
-""")
+_add("Y", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          ",    x\n"
+          "xxx  x\n"
+          "x   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("1", """
-xxx
-' x
-  x
-  x
-  x
-  x
-xxx
-""")
+_add("Z", "xxxxx\n"
+          "    x\n"
+          "xx' x\n"
+          "x   x\n"
+          " ,xxx\n"
+          "    x\n"
+          "xxxxx\n"
+          "xxxxx")
 
-_add("2", """
-xxxxxx
-'   'x
-,,x  x
-x'  ,x
-  ,xxx
-     x
-xxxxxx
-""")
+_add("1", "xxx\n"
+          "' x\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "  x\n"
+          "xxx\n"
+          "xxx")
 
-_add("3", """
-xxxxxx
-'   'x
-,,x  x
-xx  'x
-''x  x
-,   ,x
-xxxxxx
-""")
+_add("2", "xxxxxx\n"
+          "'   'x\n"
+          ",,x  x\n"
+          "x'  ,x\n"
+          "  ,xxx\n"
+          "     x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("4", """
-xxxxxx
-  x  x
-  x  x
-     x
-xxx  x
-xxx  x
-xxxxxx
-""")
+_add("3", "xxxxxx\n"
+          "'   'x\n"
+          ",,x  x\n"
+          "xx  'x\n"
+          "''x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("5", """
-xxxxxx
-     x
-  xxxx
-    'x
-xxx  x
-    xx
-xxxxxx
-""")
+_add("4", "xxxxxx\n"
+          "  x  x\n"
+          "  x  x\n"
+          "     x\n"
+          "xxx  x\n"
+          "xxx  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("6", """
-xxxxxx
-'   'x
-  x,,x
-    'x
-  x  x
-,   ,x
-xxxxxx
-""")
+_add("5", "xxxxxx\n"
+          "     x\n"
+          "  xxxx\n"
+          "    'x\n"
+          "xxx  x\n"
+          "    xx\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("7", """
-xxxxxx
-     x
-xxx  x
-xxx  x
-xxx  x
-xxx  x
-xxxxxx
-""")
+_add("6", "xxxxxx\n"
+          "'   'x\n"
+          "  x,,x\n"
+          "    'x\n"
+          "  x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("8", """
-xxxxxx
-'   'x
-  x  x
-x   xx
-  x  x
-,   ,x
-xxxxxx
-""")
+_add("7", "xxxxxx\n"
+          "     x\n"
+          "xxx  x\n"
+          "xxx  x\n"
+          "xxx  x\n"
+          "xxx  x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("9", """
-xxxxxx
-'   'x
-  x  x
-,    x
-''x  x
-,   ,x
-xxxxxx
-""")
+_add("8", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          "x   xx\n"
+          "  x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("0", """
-xxxxxx
-'   'x
-  x  x
-  x  x
-  x  x
-,   ,x
-xxxxxx
-""")
+_add("9", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          ",    x\n"
+          "''x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add(".", """
-xx
-xx
-xx
-xx
-xx
- x
-xx
-""")
+_add("0", "xxxxxx\n"
+          "'   'x\n"
+          "  x  x\n"
+          "  x  x\n"
+          "  x  x\n"
+          ",   ,x\n"
+          "xxxxxx\n"
+          "xxxxxx")
 
-_add("*", """
-xxxxx xxxxxx
-x,'xx,xx',xx
-xxx'   'xxxx
-,,x     x,,x
-xxx,   ,xxxx
-x',xx'xx,'xx
-xxxxx xxxxxx
-""")
+_add(".", "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          "xx\n"
+          " x\n"
+          "xx\n"
+          "xx")
 
-#cloud
-_add("@", """
-xxxxxxxxxxxxx
-xxxx'''xxxxxx
-x'',xxx,'xxxx
- xx,xxx',,,'x
-,'''''''''',x
-xxxxxxxxxxxxx
-xxxxxxxxxxxxx
-""")
+_add("*", "xxxxx xxxxxx\n"
+          "x,'xx,xx',xx\n"
+          "xxx'   'xxxx\n"
+          ",,x     x,,x\n"
+          "xxx,   ,xxxx\n"
+          "x',xx'xx,'xx\n"
+          "xxxxx xxxxxx\n"
+          "xxxxx xxxxxx")
 
-#rain
-_add("{", """
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xx','xxxx'xxx
-x,''',x',x,'x
-xxxxxxx,''',x
-""")
+# cloud
+_add("@", "xxxxxxxxxxxxx\n"
+          "xxxx'''xxxxxx\n"
+          "x'',xxx,'xxxx\n"
+          " xx,xxx',,,'x\n"
+          ",'''''''''',x\n"
+          "xxxxxxxxxxxxx\n"
+          "xxxxxxxxxxxxx\n"
+          "xxxxxxxxxxxxx")
 
-#moon
-_add("}", """
-xxx'' ,,x
-x'   ,xxx
-'   xxxxx
-    xxxxx
-,   xxxxx
-x,   'xxx
-xxx,, ''x
-""")
+# rain
+_add("{", "xxx',,,'xxxxx\n"
+          "',,'xxxx ''xx\n"
+          " xxxxxx,xxx x\n"
+          "x,,,,,,,,,,xx\n"
+          "xx','xxxx'xxx\n"
+          "x,''',x',x,'x\n"
+          "xxxxxxx,''',x\n"
+          "xxxxxxx,''',x")
+
+# moon
+_add("}", "xxx'' ,,x\n"
+          "x'   ,xxx\n"
+          "'   xxxxx\n"
+          "    xxxxx\n"
+          ",   xxxxx\n"
+          "x,   'xxx\n"
+          "xxx,, ''x\n"
+          "xxx,, ''x")
 
 # cloud sun
-_add("~","""
-xxxxxxxxxxxxxxxx
-xxx',,,'xx xx'xx
-',,'xxxx ''x,xxx
- xxxxxx,xxx x,,x
-x,,,,,,,,,,x'xxx
-xxxxxxxxxx xx,xx
-xxxxxxxxxxxxxxxx
-""")
+_add("~", "xxxxxxxxxxxxxxxx\n"
+          "xxx',,,'xx xx'xx\n"
+          "',,'xxxx ''x,xxx\n"
+          " xxxxxx,xxx x,,x\n"
+          "x,,,,,,,,,,x'xxx\n"
+          "xxxxxxxxxx xx,xx\n"
+          "xxxxxxxxxxxxxxxx\n"
+          "xxxxxxxxxxxxxxxx")
 
-# storm
-_add("^","""
-xxx',,,'xxxxx
-',,'xxxx'xxxx
- xxxxxx, ''xx
-x,,x'   ,,,'x
-xxx,  'xxxx x
-xxxxx,  'x',x
-xxxx' ,x,x,xx
-""")
+#  storm
+_add("^", "xxx',,,'xxxxx\n"
+          "',,'xxxx'xxxx\n"
+          " xxxxxx, ''xx\n"
+          "x,,x'   ,,,'x\n"
+          "xxx,  'xxxx x\n"
+          "xxxxx,  'x',x\n"
+          "xxxx' ,x,x,xx\n"
+          "xxxx' ,x,x,xx")
 
 # snow
-_add("%","""
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xxxxxx,',xxxx
-x,',xx,x,xxxx
-x,x,xxxxxxxxx
-""")
+_add("%", "xxx',,,'xxxxx\n"
+          "',,'xxxx ''xx\n"
+          " xxxxxx,xxx x\n"
+          "x,,,,,,,,,,xx\n"
+          "xxxxxx,',xxxx\n"
+          "x,',xx,x,xxxx\n"
+          "x,x,xxxxxxxxx\n"
+          "x,x,xxxxxxxxx")
 
 
 def get_letter(char):
     try:
         return alphabet[char.upper()]
-    except KeyError as e:
-        return LetterBlock("""
-xxxxx
-xxxxx
-xxxxx
- ,, x
- '' x
-xxxxx
-xxxxx
-""".strip())
+    except KeyError:
+        return LetterBlock("xxxxx\n"
+                           "xxxxx\n"
+                           "xxxxx\n"
+                           " ,, x\n"
+                           " '' x\n"
+                           "xxxxx\n"
+                           "xxxxx\n"
+                           "xxxxx")

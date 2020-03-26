@@ -1,290 +1,250 @@
 from fonts.LetterBlock import LetterBlock
-from fonts.exceptions import LetterNotDefined
 
 SIZE = 4
 alphabet = {}
 
+
 def _add(letter, string):
     global alphabet
-    letter_str = string.strip()
-    assert len(letter_str.split("\n")) == SIZE
-    alphabet[letter] = LetterBlock(letter_str)
+    assert len(letter.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(letter)
 
-_add("|", """
-x
-x
-x
-x
-""")
 
-_add("@","""
-',,,, x
- x  x x
- x    x
-,'''''x
-""")
+_add("|", "x\n"
+          "x\n"
+          "x\n"
+          "x\n"
+          "x")
 
-_add("A", """
-xx''xxx
-x xx xx
-x ,, xx
-x,xx,xx
-""")
+_add("@", "',,,, x\n"
+          " x  x x\n"
+          " x    x\n"
+          ",'''''x\n"
+          ",'''''x")
 
-_add("B", """
-x'''xxx
-x '',xx
-x xx xx
-x,,,xxx
-""")
+_add("A", "xx''xxx\n"
+          "x xx xx\n"
+          "x ,, xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("C", """
-xx''xxx
-x xx,xx
-x xx'xx
-xx,,xxx
-""")
+_add("B", "x'''xxx\n"
+          "x '',xx\n"
+          "x xx xx\n"
+          "x,,,xxx\n"
+          "x,,,xxx")
 
-_add("D", """
-x'''xxx
-x xx xx
-x xx xx
-x,,,xxx
-""")
+_add("C", "xx''xxx\n"
+          "x xx,xx\n"
+          "x xx'xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("E", """
-x''''xx
-x ''xxx
-x xxxxx
-x,,,,xx
-""")
+_add("D", "x'''xxx\n"
+          "x xx xx\n"
+          "x xx xx\n"
+          "x,,,xxx\n"
+          "x,,,xxx")
 
-_add("F", """
-x''''xx
-x ''xxx
-x xxxxx
-x,xxxxx
-""")
+_add("E", "x''''xx\n"
+          "x ''xxx\n"
+          "x xxxxx\n"
+          "x,,,,xx\n"
+          "x,,,,xx")
 
-_add("G", """
-xx''xxx
-x xx,xx
-x x, xx
-xx,,xxx
-""")
+_add("F", "x''''xx\n"
+          "x ''xxx\n"
+          "x xxxxx\n"
+          "x,xxxxx\n"
+          "x,xxxxx")
 
-_add("H", """
-x'xx'xx
-x '' xx
-x xx xx
-x,xx,xx
-""")
+_add("G", "xx''xxx\n"
+          "x xx,xx\n"
+          "x x, xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("I", """
-x''''xx
-xx  xxx
-xx  xxx
-x,,,,xx
-""")
+_add("H", "x'xx'xx\n"
+          "x '' xx\n"
+          "x xx xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("J", """
-xxxx'xx
-xxxx xx
-x'xx xx
-xx,,xxx
-""")
+_add("I", "x''''xx\n"
+          "xx  xxx\n"
+          "xx  xxx\n"
+          "x,,,,xx\n"
+          "x,,,,xx")
 
-_add("K", """
-x'xx'xx
-x ',xxx
-x x,'xx
-x,xx,xx
-""")
+_add("J", "xxxx'xx\n"
+          "xxxx xx\n"
+          "x'xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("L", """
-x'xxxxx
-x xxxxx
-x xxxxx
-x,,,,xx
-""")
+_add("K", "x'xx'xx\n"
+          "x ',xxx\n"
+          "x x,'xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("M", """
-'xxxx'x
- ,'', x
- xxxx x
-,xxxx,x
-""")
+_add("L", "x'xxxxx\n"
+          "x xxxxx\n"
+          "x xxxxx\n"
+          "x,,,,xx\n"
+          "x,,,,xx")
 
-_add("N", """
-x'xx'xx
-x ,' xx
-x xx xx
-x,xx,xx
-""")
+_add("M", "'xxxx'x\n"
+          " ,'', x\n"
+          " xxxx x\n"
+          ",xxxx,x\n"
+          ",xxxx,x")
 
-_add("O", """
-xx''xxx
-x xx xx
-x xx xx
-xx,,xxx
-""")
+_add("N", "x'xx'xx\n"
+          "x ,' xx\n"
+          "x xx xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("P", """
-x'''xxx
-x xx xx
-x ,,xxx
-x,xxxxx
-""")
+_add("O", "xx''xxx\n"
+          "x xx xx\n"
+          "x xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("Q", """
-xx''xxx
-x xx xx
-x x' xx
-xx,,,xx
-""")
+_add("P", "x'''xxx\n"
+          "x xx xx\n"
+          "x ,,xxx\n"
+          "x,xxxxx\n"
+          "x,xxxxx")
 
-_add("R", """
-x'''xxx
-x xx xx
-x ,,'xx
-x,xx,xx
-""")
+_add("Q", "xx''xxx\n"
+          "x xx xx\n"
+          "x x' xx\n"
+          "xx,,,xx\n"
+          "xx,,,xx")
 
-_add("S", """
-xx'''xx
-x,''xxx
-xxxx xx
-x,,,xxx
-""")
+_add("R", "x'''xxx\n"
+          "x xx xx\n"
+          "x ,,'xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("T", """
-''''''x
-xx  xxx
-xx  xxx
-xx,,xxx
-""")
+_add("S", "xx'''xx\n"
+          "x,''xxx\n"
+          "xxxx xx\n"
+          "x,,,xxx\n"
+          "x,,,xxx")
 
-_add("U", """
-x'xx'xx
-x xx xx
-x xx xx
-xx,,xxx
-""")
+_add("T", "''''''x\n"
+          "xx  xxx\n"
+          "xx  xxx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("V", """
-x'xxx'x
-x xxx x
-x x',xx
-xx,xxxx
-""")
+_add("U", "x'xx'xx\n"
+          "x xx xx\n"
+          "x xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("W", """
-'xxxx'x
- xxxx x
- ',,' x
-,xxxx,x
-""")
+_add("V", "x'xxx'x\n"
+          "x xxx x\n"
+          "x x',xx\n"
+          "xx,xxxx\n"
+          "xx,xxxx")
 
-_add("X", """
-x'xx'xx
-x,'',xx
-x',,'xx
-x,xx,xx
-""")
+_add("W", "'xxxx'x\n"
+          " xxxx x\n"
+          " ',,' x\n"
+          ",xxxx,x\n"
+          ",xxxx,x")
 
-_add("Y", """
-x'xx'xx
-x,'' xx
-xxx',xx
-xx,xxxx
-""")
+_add("X", "x'xx'xx\n"
+          "x,'',xx\n"
+          "x',,'xx\n"
+          "x,xx,xx\n"
+          "x,xx,xx")
 
-_add("Z", """
-x''''xx
-xxx',xx
-x',xxxx
-x,,,,xx
-""")
+_add("Y", "x'xx'xx\n"
+          "x,'' xx\n"
+          "xxx',xx\n"
+          "xx,xxxx\n"
+          "xx,xxxx")
 
-_add("1", """
-xxx'xxx
-xx, xxx
-xxx xxx
-xxx,xxx
-""")
+_add("Z", "x''''xx\n"
+          "xxx',xx\n"
+          "x',xxxx\n"
+          "x,,,,xx\n"
+          "x,,,,xx")
 
-_add("2", """
-xx''xxx
-x,x',xx
-x',xxxx
-x,,,,xx
-""")
+_add("1", "xxx'xxx\n"
+          "xx, xxx\n"
+          "xxx xxx\n"
+          "xxx,xxx\n"
+          "xxx,xxx")
 
-_add("3", """
-xx''xxx
-x,x',xx
-x'xx xx
-xx,,xxx
-""")
+_add("2", "xx''xxx\n"
+          "x,x',xx\n"
+          "x',xxxx\n"
+          "x,,,,xx\n"
+          "x,,,,xx")
 
-_add("4", """
-x'xxxxx
-x x'xxx
-x ' 'xx
-xxx,xxx
-""")
+_add("3", "xx''xxx\n"
+          "x,x',xx\n"
+          "x'xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("5", """
-x''''xx
-x ''xxx
-x'xx xx
-xx,,xxx
-""")
+_add("4", "x'xxxxx\n"
+          "x x'xxx\n"
+          "x ' 'xx\n"
+          "xxx,xxx\n"
+          "xxx,xxx")
 
-_add("6", """
-xx''xxx
-x ''xxx
-x xx xx
-xx,,xxx
-""")
+_add("5", "x''''xx\n"
+          "x ''xxx\n"
+          "x'xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("7", """
-x''''xx
-xxxx xx
-xx',xxx
-xx,xxxx
-""")
+_add("6", "xx''xxx\n"
+          "x ''xxx\n"
+          "x xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("8", """
-xx''xxx
-x,'',xx
-x xx xx
-xx,,xxx
-""")
+_add("7", "x''''xx\n"
+          "xxxx xx\n"
+          "xx',xxx\n"
+          "xx,xxxx\n"
+          "xx,xxxx")
 
-_add("9", """
-xx''xxx
-x xx xx
-xx,, xx
-xx,,xxx
-""")
+_add("8", "xx''xxx\n"
+          "x,'',xx\n"
+          "x xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
-_add("0", """
-xx''xxx
-x xx xx
-x xx xx
-xx,,xxx
-""")
+_add("9", "xx''xxx\n"
+          "x xx xx\n"
+          "xx,, xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
+_add("0", "xx''xxx\n"
+          "x xx xx\n"
+          "x xx xx\n"
+          "xx,,xxx\n"
+          "xx,,xxx")
 
 
 def get_letter(char):
     try:
         return alphabet[char.upper()]
-    except KeyError as e:
-        return LetterBlock("""
-xxxxxxx
-x ,, xx
-x '' xx
-xxxxxxx
-""".strip())
+    except KeyError:
+        return LetterBlock("xxxxxxx\n"
+                           "x ,, xx\n"
+                           "x '' xx\n"
+                           "xxxxxxx\n"
+                           "xxxxxxx")
