@@ -11,8 +11,3 @@ jobs:
       - run:
         name: Run unit tests
         command : python3 -m pytest test/
-
-workflows:
-  main:
-    jobs:
-      - build-and-test
