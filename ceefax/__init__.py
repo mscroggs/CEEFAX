@@ -1,1 +1,1 @@
-from . import ceefax
+from .ceefax import Ceefax
