@@ -18,3 +18,8 @@ jobs:
       - checkout
       - run: *install-ceefax
       - run: *run-unit-tests
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
