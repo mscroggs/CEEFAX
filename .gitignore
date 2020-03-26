@@ -8,3 +8,7 @@ pages/.DS_Store
 .*.swp
 localconfig.py
 list_for_git_issue
+
+build
+*.egg-info
+dist

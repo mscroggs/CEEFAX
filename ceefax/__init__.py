@@ -1,1 +1,1 @@
-from .ceefax import get_ceefax as Ceefax
+from . import ceefax
