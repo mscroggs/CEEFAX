@@ -14,7 +14,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: python3 -m flake8 ceefax --exclude=__init__.py
+          command: python3 -m flake8 ceefax --exclude=__init__.py --ignore=E722
           name: Flake8 checks on ceefax
       - run:
           command: python3 -m flake8 test
