@@ -63,7 +63,8 @@ class PageManager:
                            if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
-            module = getattr(__import__(import_name, fromlist=[page_file_no_ext]),
+            module = getattr(__import__(import_name,
+                                        fromlist=[page_file_no_ext]),
                              page_file_no_ext)
             reload(module)
             for filename in dir(module):
