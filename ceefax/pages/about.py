@@ -5,7 +5,7 @@ from ceefax import config
 class TestPage(Page):
     def __init__(self):
         super(TestPage, self).__init__("000")
-        self.title = "About "+config.NAME
+        self.title = "About " + config.NAME
         self.enabled = False
         self.background_loaded = True
 
