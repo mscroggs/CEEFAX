@@ -270,6 +270,47 @@ class Page(object):
                 self.end_bg_color()
                 self.end_fg_color()
 
+    def width_of_word(self, word):
+        width = len(word) * 5
+        width -= sum(map(word.count, u"!:,‘’.'I’")) * 3
+        width -= sum(map(word.count, u"-()1")) * 2
+        width -= sum(map(word.count, u"T")) * 1
+        width += sum(map(word.count, u"MW")) * 1
+        width -= sum(map(word.count, u"il")) * 3
+        width -= sum(map(word.count, u"fjt")) * 2
+        width -= sum(map(word.count, u"abcdeghknopqrsuvxyz")) * 1
+        width += sum(map(word.count, u"mw")) * 1
+        return width
+
+    def center_pad(self, center, chars_left):
+        if center:
+            return ((chars_left + 2) // 2) * "|"
+        else:
+            return ""
+
+    def add_title_wrapped(self, text, max_width=config.WIDTH, bg="YELLOW",
+                          fg="BLACK", font="size4", fill=True, pre=0,
+                          center=False):
+        chars_left = max_width
+        line = ""
+        text = text.split(" ")
+        first_line = True
+        for word in text:
+            if chars_left - self.width_of_word(word) <= 0 and not first_line:
+                # Print old line and start new line.
+                self.add_title(self.center_pad(center, chars_left) + line[:-1],
+                               bg=bg, fg=fg, font=font, fill=fill, pre=pre)
+                chars_left = max_width
+                line = word + " "
+            else:
+                # Add word to line
+                line = line + word + " "
+                first_line = False
+            chars_left = chars_left - self.width_of_word(word) - 3
+        # Print final line.
+        self.add_title(self.center_pad(center, chars_left) + line[:-1],
+                       bg=bg, fg=fg, font=font, fill=fill, pre=pre)
+
     def loop(self):
         pass
 
