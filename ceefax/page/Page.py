@@ -62,12 +62,12 @@ class Page(object):
         self.cupt.start_bg_color(color)
 
     def start_random_fg_color(self):
-        from cupt.cupt import non_dark_colors
+        from ceefax.cupt.cupt import non_dark_colors
         from random import choice
         self.cupt.start_fg_color(choice(non_dark_colors))
 
     def start_random_bg_color(self):
-        from cupt.cupt import non_dark_colors
+        from ceefax.cupt.cupt import non_dark_colors
         from random import choice
         self.cupt.start_bg_color(choice(non_dark_colors))
 
@@ -142,7 +142,7 @@ class Page(object):
             self.cupt.unreveal()
 
     def add_rainbow_text(self, text):
-        from cupt.cupt import non_dark_colors
+        from ceefax.cupt.cupt import non_dark_colors
         from random import choice
         for c in text:
             self.start_fg_color(choice(non_dark_colors))
