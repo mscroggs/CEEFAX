@@ -1,6 +1,6 @@
 from os.path import join as _join
 import json as _json
-from ceefax.config import test_dir, default_path, ceefax_path
+from ceefax.config import test_dir, default_path, ceefax_path, ceefax_lib_path
 
 
 class DummyFile():
@@ -57,3 +57,12 @@ def load_csv_file(f_name):
     with open(_join(ceefax_path, 'files', f_name)) as f:
         reader = csv.reader(f, delimiter=',')
         return list(reader)
+
+
+def load_lib_file(f_name):
+    try:
+        with open(_join(ceefax_lib_path, f_name)) as f:
+            return f.read()
+    except FileNotFoundError:
+        with open(_join(ceefax_lib_path, "..", f_name)) as f:
+            return f.read()

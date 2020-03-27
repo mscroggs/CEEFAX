@@ -49,7 +49,7 @@ class Page(object):
         self.cupt = Dummy(self.number)
 
     def plot(self, *args, **kwargs):
-        from ceegraph import plot as ceeplot
+        from ceefax.ceegraph import plot as ceeplot
         ceeplot(self, *args, **kwargs)
 
     def move_cursor(self, x=None, y=None):
