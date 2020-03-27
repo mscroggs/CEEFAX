@@ -1,7 +1,7 @@
 import random
 from ceefax import config
 import os
-from ceefax.page import Page, special
+from ceefax.page import Page
 import signal
 import curses
 from ceefax.error import error_list
@@ -192,9 +192,6 @@ class PageManager:
             self.clear_input()
             if inp is not None:
                 page = self.handle_input(inp)
-            elif config.now().strftime("%H:%M") == "13:37":
-                page = self.build(special.LeetPage)
-                page.cupt = self.screen.cupt
             else:
                 page = self.get_loaded_random()
             self.show(page)
