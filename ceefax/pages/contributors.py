@@ -94,7 +94,7 @@ class TeamPage(Page):
                            "   WWW   "]]
         shuffle(team)
 
-        for i,t in enumerate(team[:24]):
+        for i, t in enumerate(team[:24]):
             row = i // 6
             col = i % 6
             self.print_image(t[1].replace(" ", "-"), 8 + row * 6, col * 14)
