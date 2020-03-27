@@ -2,7 +2,6 @@ import pytest
 
 from ceefax.page import PageManager
 from ceefax.cupt import DummyScreen
-from ceefax import config
 
 page_manager = PageManager(DummyScreen())
 
