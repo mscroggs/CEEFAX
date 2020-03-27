@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from fonts.LetterBlock import LetterBlock
+from ceefax.fonts.LetterBlock import LetterBlock
 from random import choice
 
-SIZE = 7
+SIZE = 8
 alphabet = {}
 
 
 def _add(letter, string):
     global alphabet
-    assert len(letter.split("\n")) == SIZE
-    alphabet[letter] = LetterBlock(letter)
+    assert len(string.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(string)
 
 
 _add("'", " x\n"
@@ -620,7 +620,7 @@ _add("%", "xxxxx',,,'xxxxxx\n"
 
 # unknown
 _add("`", "\n".join(["".join([choice(["x", ",", "'"]) for i in range(16)])
-                    for j in range(7)]))
+                    for j in range(SIZE)]))
 
 
 def get_letter(char):

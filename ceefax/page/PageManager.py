@@ -76,30 +76,25 @@ class PageManager:
                            if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
-            try:
-                module = getattr(__import__(
-                    "pages", fromlist=[page_file_no_ext]), page_file_no_ext)
-                reload(module)
-                for filename in dir(module):
-                    obj = getattr(module, filename)
-                    if isinstance(obj, Page):
-                        obj.cupt = self.screen.cupt
-                        if obj.background is not None:
-                            obj.background()
-                        obj.reload()
-                        obj.generate_content()
-                    elif isinstance(obj, list):
-                        for thing in obj:
-                            if isinstance(thing, Page):
-                                thing.cupt = self.screen.cupt
-                                if thing.background is not None:
-                                    thing.background()
-                                thing.reload()
-                                thing.generate_content()
-            except:
-                print(page_file)
-                print(traceback.format_exc())
-                print("")
+            module = getattr(__import__(
+                "pages", fromlist=[page_file_no_ext]), page_file_no_ext)
+            reload(module)
+            for filename in dir(module):
+                obj = getattr(module, filename)
+                if isinstance(obj, Page):
+                    obj.cupt = self.screen.cupt
+                    if obj.background is not None:
+                        obj.background()
+                    obj.reload()
+                    obj.generate_content()
+                elif isinstance(obj, list):
+                    for thing in obj:
+                        if isinstance(thing, Page):
+                            thing.cupt = self.screen.cupt
+                            if thing.background is not None:
+                                thing.background()
+                            thing.reload()
+                            thing.generate_content()
 
     def add(self, page):
         if page.number in self.pages:

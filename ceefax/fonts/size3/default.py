@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from fonts.LetterBlock import LetterBlock
+from ceefax.fonts.LetterBlock import LetterBlock
 
 SIZE = 4
 alphabet = {}
@@ -8,8 +8,8 @@ alphabet = {}
 
 def _add(letter, string):
     global alphabet
-    assert len(letter.split("\n")) == SIZE
-    alphabet[letter] = LetterBlock(letter)
+    assert len(string.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(string)
 
 
 _add("|", "x\n"

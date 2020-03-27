@@ -1,12 +1,12 @@
-import fonts.size7.default
-import fonts.size7condensed.default
-import fonts.size7extracondensed.default
-import fonts.size4.default
-import fonts.size4bold.default
-import fonts.size4mono.default
-import fonts.exceptions
+import ceefax.fonts.size7.default
+import ceefax.fonts.size7condensed.default
+import ceefax.fonts.size7extracondensed.default
+import ceefax.fonts.size4.default
+import ceefax.fonts.size4bold.default
+import ceefax.fonts.size4mono.default
+import ceefax.fonts.exceptions
+from ceefax.fonts.LetterBlock import LetterBlock
 from ceefax import config
-from fonts.LetterBlock import LetterBlock
 
 
 def process_printing_options(function):
@@ -95,19 +95,19 @@ class Printer(object):
 
 
 extrathin_instance = Printer()
-extrathin_instance.set_font(fonts.size7extracondensed.default)
+extrathin_instance.set_font(ceefax.fonts.size7extracondensed.default)
 
 thin_instance = Printer(extrathin_instance)
-thin_instance.set_font(fonts.size7condensed.default)
+thin_instance.set_font(ceefax.fonts.size7condensed.default)
 
 instance = Printer(thin_instance)
-instance.set_font(fonts.size7.default)
+instance.set_font(ceefax.fonts.size7.default)
 
 size4_instance = Printer()
-size4_instance.set_font(fonts.size4.default)
+size4_instance.set_font(ceefax.fonts.size4.default)
 
 size4bold_instance = Printer(size4_instance)
-size4bold_instance.set_font(fonts.size4bold.default)
+size4bold_instance.set_font(ceefax.fonts.size4bold.default)
 
 size4mono_instance = Printer()
-size4mono_instance.set_font(fonts.size4mono.default)
+size4mono_instance.set_font(ceefax.fonts.size4mono.default)

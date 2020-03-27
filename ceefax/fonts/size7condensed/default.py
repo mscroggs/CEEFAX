@@ -1,14 +1,13 @@
-from fonts.LetterBlock import LetterBlock
+from ceefax.fonts.LetterBlock import LetterBlock
 
-SIZE = 7
+SIZE = 8
 alphabet = {}
 
 
 def _add(letter, string):
     global alphabet
-    letter_str = string.strip()
-    assert len(letter_str.split("\n")) == SIZE
-    alphabet[letter] = LetterBlock(letter_str)
+    assert len(string.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(string)
 
 
 _add("|", "x\n"
