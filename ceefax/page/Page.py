@@ -1,5 +1,6 @@
 from ceefax import config
 from ceefax.error import error_list
+from ceefax.printer import get_font
 
 WARNING_USED = False
 
@@ -88,39 +89,13 @@ class Page(object):
             fg = color_codes[fg]
         if bg in color_codes:
             bg = color_codes[bg]
-        if font == "size7":
-            from printer import instance as prinstance
-        elif font == "size7condensed":
-            from printer import thin_instance as prinstance
-        elif font == "size7extracondensed":
-            from printer import extrathin_instance as prinstance
-        elif font == "size4":
-            from printer import size4_instance as prinstance
-        elif font == "size4bold":
-            from printer import size4bold_instance as prinstance
-        elif font == "size4mono":
-            from printer import size4mono_instance as prinstance
-        else:
-            raise ValueError("Undefined font.")
+        prinstance = get_font(font)
         title_block = prinstance.text_to_ascii(title, fill=fill,
                                                max_width=max_width)
         self.cupt.add_blocked_block(title_block, fg=fg, bg=bg, pre=pre)
 
     def add_rainbow_title(self, title, font="size7", pre=0, fill=True):
-        if font == "size7":
-            from printer import instance as prinstance
-        elif font == "size7condensed":
-            from printer import thin_instance as prinstance
-        elif font == "size7extracondensed":
-            from printer import extrathin_instance as prinstance
-        elif font == "size4":
-            from printer import size4_instance as prinstance
-        elif font == "size4bold":
-            from printer import size4bold_instance as prinstance
-        elif font == "size4mono":
-            from printer import size4mono_instance as prinstance
-        else:
-            raise ValueError("Undefined font.")
+        prinstance = get_font(font)
         title_block = prinstance.text_to_ascii(title, fill=fill)
         self.cupt.add_blocked_block(title_block, rainbow=True, pre=pre)
 
