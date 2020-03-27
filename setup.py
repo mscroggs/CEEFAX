@@ -1,13 +1,13 @@
+import os
 from setuptools import setup
+
+os.system("cp VERSION LICENSE.txt contributors.txt ceefax/")
 
 with open("README.md") as f:
     long_description = f.read()
 
 with open("VERSION") as f:
     v = f.read()
-
-with open("ceefax/VERSION","w") as f:
-    f.write(v)
 
 setup(
    name='ceefax',
@@ -21,5 +21,7 @@ setup(
    url="http://www.github.com/mscroggs/CEEFAX",
    packages=['ceefax', 'ceefax.ceefax', 'ceefax.ceegraph', 'ceefax.cupt',
              'ceefax.error', 'ceefax.fonts', 'ceefax.functions', 'ceefax.helpers',
-             'ceefax.page', 'ceefax.printer']
+             'ceefax.page', 'ceefax.printer'],
+    package_data={'': ['VERSION', 'LICENSE.txt', 'contributors.txt']},
+    include_package_data=True,
 )
