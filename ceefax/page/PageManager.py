@@ -23,13 +23,17 @@ def pass_f(signum, frame):
 
 
 def is_page_file(f):
-    if not os.path.isfile(os.path.join(config.pages_dir, f)):
-        return False
     if f[0] == "_":
         return False
     if f[-2:] != "py":
         return False
-    return True
+    if config.pages_dir is not None:
+        if os.path.isfile(os.path.join(config.pages_dir, f)):
+            return True
+    if config.ceefax_lib_pages is not None:
+        if os.path.isfile(os.path.join(config.ceefax_lib_pages, f)):
+            return True
+    return False
 
 
 def get_chr(ip):
@@ -47,14 +51,19 @@ class PageManager:
         self.load_all_pages()
 
     def load_all_pages(self):
-        if not os.path.exists(config.pages_dir):
+        self.load_folder(config.ceefax_lib_pages, "ceefax.pages")
+        if config.pages_dir is not None:
+            self.load_folder(config.pages_dir, "pages")
+
+    def load_folder(self, folder, import_name):
+        if not os.path.exists(folder):
             raise ConfigError("The pages folder doesn't exist:"
-                              " " + config.pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir)
+                              " " + folder)
+        only_page_files = [f for f in os.listdir(folder)
                            if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
-            module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+            module = getattr(__import__(import_name, fromlist=[page_file_no_ext]),
                              page_file_no_ext)
             reload(module)
             for filename in dir(module):
@@ -67,34 +76,6 @@ class PageManager:
                         if isinstance(thing, Page):
                             thing.cupt = self.screen.cupt
                             self.add(thing)
-
-    def test_all_pages(self):
-        if not os.path.exists(config.pages_dir):
-            raise ConfigError("The pages folder doesn't exist:"
-                              " " + config.pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir)
-                           if is_page_file(f)]
-        for page_file in only_page_files:
-            page_file_no_ext = os.path.splitext(page_file)[0]
-            module = getattr(__import__(
-                "pages", fromlist=[page_file_no_ext]), page_file_no_ext)
-            reload(module)
-            for filename in dir(module):
-                obj = getattr(module, filename)
-                if isinstance(obj, Page):
-                    obj.cupt = self.screen.cupt
-                    if obj.background is not None:
-                        obj.background()
-                    obj.reload()
-                    obj.generate_content()
-                elif isinstance(obj, list):
-                    for thing in obj:
-                        if isinstance(thing, Page):
-                            thing.cupt = self.screen.cupt
-                            if thing.background is not None:
-                                thing.background()
-                            thing.reload()
-                            thing.generate_content()
 
     def add(self, page):
         if page.number in self.pages:

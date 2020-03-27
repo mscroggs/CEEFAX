@@ -6,6 +6,9 @@ with open("README.md") as f:
 with open("VERSION") as f:
     v = f.read()
 
+with open("ceefax/VERSION","w") as f:
+    f.write(v)
+
 setup(
    name='ceefax',
    version=v,
