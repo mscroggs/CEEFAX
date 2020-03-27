@@ -20,6 +20,11 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y",
     if ymax is None:
         ymax = max(ys)
 
+    if xmin == xmax:
+        xmax += 1
+    if ymin == ymax:
+        ymax += 1
+
     xtick = (xmax - xmin) / (width - 3)
     ytick = (ymax - ymin) / (height * 2 - 4)
 
@@ -64,7 +69,7 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y",
     self.print_image("\n".join("".join(i for i in j) for j in canvas), y, x)
 
     if xlabels is None:
-        if xmax - xmin >= 2:
+        if xmax - xmin >= 8:
             step = intf((xmax - xmin) / 4)
         else:
             step = (xmax - xmin) / 4
@@ -79,7 +84,7 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y",
             self.add_text(str(label))
 
     if ylabels is None:
-        if ymax - ymin >= 2:
+        if ymax - ymin >= 8:
             step = intf((ymax - ymin) / 4)
         else:
             step = (ymax - ymin) / 4
