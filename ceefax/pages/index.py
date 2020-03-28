@@ -8,7 +8,6 @@ class IndexPage(Page):
         super(IndexPage, self).__init__(n)
         self.importance = 5
         self.title = "Index"
-        self.in_index = False
 
     def generate_content(self):
         self.print_image(config.title, 1)
@@ -19,11 +18,8 @@ class IndexPage(Page):
         i = 0
         _items = Ceefax().page_manager.sorted_pages()
         for num, page in _items:
-            if page.enabled and page.in_index:
-                if page.index_num is None:
-                    self.add_text(num + "    ", fg="MAGENTA")
-                else:
-                    self.add_text(page.index_num, fg="MAGENTA")
+            if page.enabled and page.index_num is not None:
+                self.add_text(page.index_num, fg="MAGENTA")
                 self.add_text(" " + page.title)
                 if i == 0:
                     self.move_cursor(x=36)
