@@ -50,13 +50,12 @@ class Font:
             assert self.size == len(l.split("\n"))
             self.letters[c] = LetterBlock(l)
         if no_char is None:
-            self.no_char = "xxxxx\n"
-            self.no_char += " ,, x\n"
-            self.no_char += " xx x\n" * (self.size - 4)
-            self.no_char += " '' x\n"
-            self.no_char += "xxxxx"
-        else:
-            self.no_char = no_char
+            no_char = "xxxxx\n"
+            no_char += " ,, x\n"
+            no_char += " xx x\n" * (self.size - 4)
+            no_char += " '' x\n"
+            no_char += "xxxxx"
+        self.no_char = LetterBlock(no_char)
 
     @process_printing_options
     def text_to_letterblock(self, text):
