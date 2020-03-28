@@ -1,6 +1,6 @@
 from ceefax import config
 from ceefax.error import error_list
-from ceefax.printer import get_font
+from ceefax.fonts import get_font
 
 WARNING_USED = False
 
