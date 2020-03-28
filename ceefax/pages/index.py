@@ -19,7 +19,8 @@ class IndexPage(Page):
         _items = Ceefax().page_manager.sorted_pages()
         for num, page in _items:
             if page.enabled and page.index_num is not None:
-                self.add_text(page.index_num, fg="MAGENTA")
+                self.add_text((page.index_num + "        ")[:7],
+                              fg="MAGENTA")
                 self.add_text(" " + page.title)
                 if i == 0:
                     self.move_cursor(x=36)
