@@ -21,7 +21,7 @@ setup(
    url="http://www.github.com/mscroggs/CEEFAX",
    packages=['ceefax', 'ceefax.ceefax', 'ceefax.ceegraph', 'ceefax.cupt',
              'ceefax.error', 'ceefax.fonts', 'ceefax.functions', 'ceefax.helpers',
-             'ceefax.page', 'ceefax.pages', 'ceefax.printer',
+             'ceefax.page', 'ceefax.pages',
              'ceefax.fonts.size3', 'ceefax.fonts.size4bold', 'ceefax.fonts.size7',
              'ceefax.fonts.size7extracondensed', 'ceefax.fonts.size4',
              'ceefax.fonts.size4mono', 'ceefax.fonts.size7condensed'],
