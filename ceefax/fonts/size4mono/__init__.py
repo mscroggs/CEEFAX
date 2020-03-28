@@ -1,1 +1,1 @@
-from .default import *
+from .default import size4monofont

@@ -1,6 +1,6 @@
 from ceefax import config
 from ceefax.error import error_list
-from ceefax.printer import get_font
+from ceefax.fonts import get_font
 
 WARNING_USED = False
 
@@ -35,7 +35,6 @@ class Page(object):
     def __init__(self, number):
         self.reveal_status = False
         self.enabled = True
-        self.in_index = True
         self.index_num = None
         self.tagline = config.NAME + ": The World at Your Fingertips"
         self.importance = 2

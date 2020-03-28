@@ -1,4 +1,4 @@
-from ceefax.printer import get_font, font_list
+from ceefax.fonts import get_font, font_list
 import pytest
 
 
