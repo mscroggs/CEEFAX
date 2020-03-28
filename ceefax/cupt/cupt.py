@@ -418,7 +418,7 @@ class Block:
         return y, x
 
 
-cmap = {"x": u"\u2588", "'": u"\u2580", ", ": u"\u2584"}
+cmap = {"x": u"\u2588", "'": u"\u2580", ",": u"\u2584"}
 
 
 class BlockedBlock:
