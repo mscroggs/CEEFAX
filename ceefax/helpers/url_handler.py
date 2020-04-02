@@ -6,6 +6,11 @@ def load_json(url):
     return json.loads(feed)
 
 
+def load_csv(url):
+    feed = load(url)
+    return [i.split(",") for i in feed.split("\n")]
+
+
 def load(url):
     import urllib.request
     headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) "
