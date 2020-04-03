@@ -196,7 +196,7 @@ class Page(object):
             if len(ls) > 0 and m1 is None:
                 m1 = ls[0]
                 ls = ls[1:]
-            if len(ls) > 0 and m2 is None:
+width            if len(ls) > 0 and m2 is None:
                 m2 = ls[0]
                 break
         if m2 is None:
@@ -271,25 +271,25 @@ class Page(object):
 
     def width_of_word(self, word, font="size4"):
         if font == "size7":
-            width = (len(word) * 7
-                     - sum(map(word.count, u"|")) * 6
-                     - sum(map(word.count, u"'")) * 5
-                     - sum(map(word.count, u"I!:.")) * 4
-                     - sum(map(word.count, u"1()-#&")) * 3
-                     - sum(map(word.count, u"LJ/")) * 1
-                     + sum(map(word.count, u"N")) * 1
-                     + sum(map(word.count, u"WM")) * 2)
+            width = len(word) * 7
+            width -= sum(map(word.count, u"|")) * 6
+            width -= sum(map(word.count, u"'")) * 5
+            width -= sum(map(word.count, u"I!:.")) * 4
+            width -= sum(map(word.count, u"1()-#&")) * 3
+            width -= sum(map(word.count, u"LJ/")) * 1
+            width += sum(map(word.count, u"N")) * 1
+            width += sum(map(word.count, u"WM")) * 2
         else:
-            width = (len(word) * 5
-                     - sum(map(word.count, u"|")) * 4
-                     - sum(map(word.count, u"!:,‘’.'I’")) * 3
-                     - sum(map(word.count, u"-()1")) * 2
-                     - sum(map(word.count, u"T")) * 1
-                     + sum(map(word.count, u"MW")) * 1
-                     - sum(map(word.count, u"il")) * 3
-                     - sum(map(word.count, u"fjt")) * 2
-                     - sum(map(word.count, u"abcdeghknopqrsuvxyz")) * 1
-                     + sum(map(word.count, u"mw")) * 1)
+            width = len(word) * 5
+            width -= sum(map(word.count, u"|")) * 4
+            width -= sum(map(word.count, u"!:,‘’.'I’")) * 3
+            width -= sum(map(word.count, u"-()1")) * 2
+            width -= sum(map(word.count, u"T")) * 1
+            width += sum(map(word.count, u"MW")) * 1
+            width -= sum(map(word.count, u"il")) * 3
+            width -= sum(map(word.count, u"fjt")) * 2
+            width -= sum(map(word.count, u"abcdeghknopqrsuvxyz")) * 1
+            width += sum(map(word.count, u"mw")) * 1
         return width
 
     def center_pad(self, center, chars_left, right=False):
