@@ -269,35 +269,35 @@ class Page(object):
                 self.end_bg_color()
                 self.end_fg_color()
 
-    def width_of_word(self, word,font="size4"):
-        if font=="size7":
-            width = len(word)*7 \
-            - sum(map(word.count, u"|"))*6 \
-            - sum(map(word.count, u"'"))*5 \
-            - sum(map(word.count, u"I!:."))*4 \
-            - sum(map(word.count, u"1()-#&"))*3 \
-            - sum(map(word.count, u"LJ/"))*1 \
-            + sum(map(word.count, u"N"))*1 \
-            + sum(map(word.count, u"WM"))*2
+    def width_of_word(self, word, font="size4"):
+        if font == "size7":
+            width = (len(word) * 7
+                     - sum(map(word.count, u"|")) * 6
+                     - sum(map(word.count, u"'")) * 5
+                     - sum(map(word.count, u"I!:.")) * 4
+                     - sum(map(word.count, u"1()-#&")) * 3
+                     - sum(map(word.count, u"LJ/")) * 1
+                     + sum(map(word.count, u"N")) * 1
+                     + sum(map(word.count, u"WM")) * 2)
         else:
-            width = len(word)*5 \
-            - sum(map(word.count, u"|"))*4 \
-            - sum(map(word.count, u"!:,‘’.'I’"))*3 \
-            - sum(map(word.count, u"-()1"))*2 \
-            - sum(map(word.count, u"T"))*1 \
-            + sum(map(word.count, u"MW"))*1 \
-            - sum(map(word.count, u"il"))*3 \
-            - sum(map(word.count, u"fjt"))*2 \
-            - sum(map(word.count, u"abcdeghknopqrsuvxyz"))*1 \
-            + sum(map(word.count, u"mw"))*1
+            width = (len(word) * 5
+                     - sum(map(word.count, u"|")) * 4
+                     - sum(map(word.count, u"!:,‘’.'I’")) * 3
+                     - sum(map(word.count, u"-()1")) * 2
+                     - sum(map(word.count, u"T")) * 1
+                     + sum(map(word.count, u"MW")) * 1
+                     - sum(map(word.count, u"il")) * 3
+                     - sum(map(word.count, u"fjt")) * 2
+                     - sum(map(word.count, u"abcdeghknopqrsuvxyz")) * 1
+                     + sum(map(word.count, u"mw")) * 1)
         return width
 
-    def center_pad(self,center,chars_left,right=False):
+    def center_pad(self, center, chars_left, right=False):
         if center:
             if right:
-                return ((chars_left+2)//2 + (chars_left+2)%2)*"|"
+                return ((chars_left + 2) // 2 + (chars_left + 2) % 2) * "|"
             else:
-                return ((chars_left+2)//2)*"|"
+                return ((chars_left + 2) // 2) * "|"
         else:
             return ""
 
@@ -309,7 +309,8 @@ class Page(object):
         text = text.split(" ")
         first_line = True
         for word in text:
-            if chars_left - self.width_of_word(word,font) <= 0 and not first_line:
+            if chars_left - self.width_of_word(word,
+                                               font) <= 0 and not first_line:
                 # Print old line and start new line.
                 self.add_title(self.center_pad(center, chars_left) + line[:-1],
                                bg=bg, fg=fg, font=font, fill=fill, pre=pre)
@@ -319,9 +320,10 @@ class Page(object):
                 # Add word to line
                 line = line + word + " "
                 first_line = False
-            chars_left = chars_left - self.width_of_word(word,font) - 3
+            chars_left = chars_left - self.width_of_word(word, font) - 3
         # Print final line.
-        self.add_title(self.center_pad(center, chars_left) + line[:-1] + self.center_pad(center,chars_left,right=True),
+        self.add_title(self.center_pad(center, chars_left) + line[:-1]
+                       + self.center_pad(center, chars_left, right=True),
                        bg=bg, fg=fg, font=font, fill=fill, pre=pre)
 
     def loop(self):
