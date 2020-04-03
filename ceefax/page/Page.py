@@ -323,7 +323,7 @@ class Page(object):
             chars_left = chars_left - self.width_of_word(word, font) - 3
         # Print final line.
         title = self.center_pad(center, chars_left) + line[:-1]
-        title += self.center_pad(center, chars_left, right=True),
+        title += self.center_pad(center, chars_left, right=True)
         self.add_title(title, bg=bg, fg=fg, font=font, fill=fill, pre=pre)
 
     def loop(self):
