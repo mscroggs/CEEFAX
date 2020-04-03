@@ -196,7 +196,7 @@ class Page(object):
             if len(ls) > 0 and m1 is None:
                 m1 = ls[0]
                 ls = ls[1:]
-width            if len(ls) > 0 and m2 is None:
+            if len(ls) > 0 and m2 is None:
                 m2 = ls[0]
                 break
         if m2 is None:
