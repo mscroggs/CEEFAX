@@ -45,3 +45,6 @@ class Ceefax:
 class DummyPM:
     def sorted_pages(self):
         return []
+
+    def index_pages(self):
+        return []
