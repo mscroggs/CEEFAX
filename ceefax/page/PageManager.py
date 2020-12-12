@@ -116,6 +116,12 @@ class PageManager:
         items.sort()
         return items
 
+    def index_pages(self):
+        items = [page for page in self.pages.values()
+                 if page.index_num is not None]
+        items.sort(key=lambda x: x.index_num)
+        return items
+
     def export_all_to_html(self):
         from helpers.file_handler import open_html
         for page_num, page in self.sorted_pages():

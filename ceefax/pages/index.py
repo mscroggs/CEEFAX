@@ -15,19 +15,13 @@ class IndexPage(Page):
         self.add_text(" INDEX  " * 10, fg="GREEN")
         self.add_newline()
         self.add_newline()
-        i = 0
-        _items = Ceefax().page_manager.sorted_pages()
-        for num, page in _items:
-            if page.enabled and page.index_num is not None:
-                self.add_text((page.index_num + "        ")[:7],
-                              fg="MAGENTA")
-                self.add_text(" " + page.title)
-                if i == 0:
-                    self.move_cursor(x=36)
-                    i = 1
-                else:
-                    self.add_newline()
-                    i = 0
+        for i, page in enumerate(Ceefax().page_manager.index_pages()):
+            self.add_text((page.index_num + "         ")[:8] + page.title,
+                          fg="MAGENTA")
+            if i % 2 == 0:
+                self.move_cursor(x=36)
+            else:
+                self.add_newline()
 
 
 i_p = IndexPage("100")
