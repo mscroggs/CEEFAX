@@ -169,11 +169,11 @@ class Page(object):
     def print_image(self, image, y_coord=0, x_coord=0):
         self.move_cursor(y=y_coord, x=x_coord)
         lines = image.split("\n")
-        for l in range(len(lines) // 2):
-            for c in range(len(lines[2 * l])):
-                c1 = lines[2 * l][c]
+        for k in range(len(lines) // 2):
+            for c in range(len(lines[2 * k])):
+                c1 = lines[2 * k][c]
                 try:
-                    c2 = lines[2 * l + 1][c]
+                    c2 = lines[2 * k + 1][c]
                 except:
                     c2 = "k"
                 self.start_fg_color(color_codes[c1])
@@ -181,7 +181,7 @@ class Page(object):
                 self.add_text(u"\u2580")
                 self.end_bg_color()
                 self.end_fg_color()
-            self.move_cursor(y=y_coord + l + 1, x=x_coord)
+            self.move_cursor(y=y_coord + k + 1, x=x_coord)
 
     def four_to_one(self, four):
         n = {i: 0 for i in color_codes}
@@ -252,11 +252,11 @@ class Page(object):
     def print_compressed_image(self, image, y_coord=0, x_coord=0):
         self.move_cursor(y=y_coord, x=x_coord)
         lines = image.split("\n")
-        for l in range(0, len(lines), 2):
-            self.move_cursor(y=y_coord + l // 2, x=x_coord)
-            for c in range(0, len(lines[l]), 2):
+        for k in range(0, len(lines), 2):
+            self.move_cursor(y=y_coord + k // 2, x=x_coord)
+            for c in range(0, len(lines[k]), 2):
                 four = ""
-                for A in [l, l + 1]:
+                for A in [k, k + 1]:
                     for B in [c, c + 1]:
                         if len(lines) > A and len(lines[A]) > B:
                             four += lines[A][B]
