@@ -1,24 +1,23 @@
 import json
+import requests
 
 
-def load_json(url):
-    feed = load(url)
+def load_json(url, headers={}, cookies={}):
+    feed = load(url, headers, cookies)
     return json.loads(feed)
 
 
-def load_csv(url):
-    feed = load(url)
+def load_csv(url, headers={}, cookies={}):
+    feed = load(url, headers, cookies)
     return [i.split(",") for i in feed.split("\n")]
 
 
-def load(url):
+def load(url, headers={}, cookies={}):
     import urllib.request
-    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) "
+    headers["User-Agent"] = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) "
                              "AppleWebKit/537.36 (KHTML, like Gecko) "
-                             "Chrome/50.0.2661.102 Safari/537.36"}
-    req = urllib.request.Request(url, headers=headers)
-    response = urllib.request.urlopen(req)
-    out = response.read()
+                             "Chrome/50.0.2661.102 Safari/537.36")
+    out = requests.get(url, headers=headers, cookies=cookies).text
     try:
         return out.decode(response.info().get_content_charset('utf-8'))
     except:
