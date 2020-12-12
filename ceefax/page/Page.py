@@ -18,6 +18,7 @@ color_codes = {"k": "BLACK", "K": "GREY",
 class Dummy(object):
     def __init__(self, number="???"):
         self.number = number
+        self.test = False
 
     def __getattr__(self, *args, **kwargs):
         global WARNING_USED
@@ -46,6 +47,7 @@ class Page(object):
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
         self.cupt = Dummy(self.number)
+        self.test = False
 
     def plot(self, *args, **kwargs):
         from ceefax.ceegraph import plot as ceeplot
