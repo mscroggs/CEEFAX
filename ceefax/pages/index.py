@@ -16,8 +16,13 @@ class IndexPage(Page):
         self.add_newline()
         self.add_newline()
         for i, page in enumerate(Ceefax().page_manager.index_pages()):
-            self.add_text((page.index_num + "         ")[:8] + page.title,
-                          fg="MAGENTA")
+            self.add_text(page.index_num, fg="MAGENTA")
+            if i % 2 == 0:
+                self.move_cursor(x=9)
+            else:
+                self.move_cursor(x=45)
+            self.add_text(page.title, fg="WHITE")
+
             if i % 2 == 0:
                 self.move_cursor(x=36)
             else:
